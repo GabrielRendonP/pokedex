@@ -23289,3 +23289,1597 @@ Processing by TrainersController#show as HTML
 Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.5ms | Allocations: 5926)
 
 
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (262.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pokedex_app_development"[0m
+  [1m[35m (198.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "poxedex_app_test"[0m
+  [1m[35m (166.8ms)[0m  [1m[35mCREATE DATABASE "pokedex_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (73.6ms)[0m  [1m[35mCREATE DATABASE "poxedex_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7471616722998446445)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTrainers (20220112230728)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "trainers" ("id" bigserial primary key, "name" character varying, "picture" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220112230728"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePokemons (20220112230821)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "pokemons" ("id" bigserial primary key, "name" character varying, "picture" character varying, "trainer_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_cb73098d36"
+FOREIGN KEY ("trainer_id")
+  REFERENCES "trainers" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_pokemons_on_trainer_id" ON "pokemons" ("trainer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220112230821"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAbilities (20220112231005)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "abilities" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220112231005"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePokeTypes (20220112231124)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "poke_types" ("id" bigserial primary key, "name" character varying, "double_damage_from" character varying[], "double_damage_to" character varying[], "half_damage_from" character varying[], "half_damage_to" character varying[], "no_damage_from" character varying[], "no_damage_to" character varying[], "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220112231124"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDescriptionToPokemon (20220112231153)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "pokemons" ADD "description" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220112231153"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePokeData (20220113104419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "poke_data" ("id" bigserial primary key, "name" character varying, "picture" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220113104419"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAnimationToPokeData (20220113105233)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "poke_data" ADD "animation" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220113105233"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJoinTablePokemonsAbilities (20220113134436)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "abilities_pokemons" ("pokemon_id" bigint NOT NULL, "ability_id" bigint NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_abilities_pokemons_on_pokemon_id_and_ability_id" ON "abilities_pokemons" ("pokemon_id", "ability_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_abilities_pokemons_on_ability_id_and_pokemon_id" ON "abilities_pokemons" ("ability_id", "pokemon_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220113134436"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-01-14 13:16:22.693253"], ["updated_at", "2022-01-14 13:16:22.693253"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7471616722998446445)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.9ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "bulbasaur"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"], ["created_at", "2022-01-14 13:16:58.089241"], ["updated_at", "2022-01-14 13:16:58.089241"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ivysaur"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"], ["created_at", "2022-01-14 13:16:58.099086"], ["updated_at", "2022-01-14 13:16:58.099086"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "venusaur"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"], ["created_at", "2022-01-14 13:16:58.101634"], ["updated_at", "2022-01-14 13:16:58.101634"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "charmander"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"], ["created_at", "2022-01-14 13:16:58.126283"], ["updated_at", "2022-01-14 13:16:58.126283"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "charmeleon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"], ["created_at", "2022-01-14 13:16:58.129139"], ["updated_at", "2022-01-14 13:16:58.129139"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "charizard"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"], ["created_at", "2022-01-14 13:16:58.132028"], ["updated_at", "2022-01-14 13:16:58.132028"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "squirtle"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"], ["created_at", "2022-01-14 13:16:58.134914"], ["updated_at", "2022-01-14 13:16:58.134914"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "wartortle"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"], ["created_at", "2022-01-14 13:16:58.137307"], ["updated_at", "2022-01-14 13:16:58.137307"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/8.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "blastoise"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"], ["created_at", "2022-01-14 13:16:58.140440"], ["updated_at", "2022-01-14 13:16:58.140440"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "caterpie"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"], ["created_at", "2022-01-14 13:16:58.143915"], ["updated_at", "2022-01-14 13:16:58.143915"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/10.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "metapod"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"], ["created_at", "2022-01-14 13:16:58.147091"], ["updated_at", "2022-01-14 13:16:58.147091"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/11.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "butterfree"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"], ["created_at", "2022-01-14 13:16:58.149784"], ["updated_at", "2022-01-14 13:16:58.149784"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/12.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "weedle"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"], ["created_at", "2022-01-14 13:16:58.151984"], ["updated_at", "2022-01-14 13:16:58.151984"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/13.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kakuna"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"], ["created_at", "2022-01-14 13:16:58.154771"], ["updated_at", "2022-01-14 13:16:58.154771"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/14.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "beedrill"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"], ["created_at", "2022-01-14 13:16:58.157330"], ["updated_at", "2022-01-14 13:16:58.157330"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/15.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "pidgey"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"], ["created_at", "2022-01-14 13:16:58.159837"], ["updated_at", "2022-01-14 13:16:58.159837"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/16.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "pidgeotto"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"], ["created_at", "2022-01-14 13:16:58.162047"], ["updated_at", "2022-01-14 13:16:58.162047"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/17.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "pidgeot"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"], ["created_at", "2022-01-14 13:16:58.164682"], ["updated_at", "2022-01-14 13:16:58.164682"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/18.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rattata"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"], ["created_at", "2022-01-14 13:16:58.167272"], ["updated_at", "2022-01-14 13:16:58.167272"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/19.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "raticate"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"], ["created_at", "2022-01-14 13:16:58.169843"], ["updated_at", "2022-01-14 13:16:58.169843"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/20.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "spearow"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"], ["created_at", "2022-01-14 13:16:58.172254"], ["updated_at", "2022-01-14 13:16:58.172254"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/21.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "fearow"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"], ["created_at", "2022-01-14 13:16:58.174453"], ["updated_at", "2022-01-14 13:16:58.174453"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/22.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ekans"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"], ["created_at", "2022-01-14 13:16:58.176860"], ["updated_at", "2022-01-14 13:16:58.176860"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/23.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "arbok"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"], ["created_at", "2022-01-14 13:16:58.179452"], ["updated_at", "2022-01-14 13:16:58.179452"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/24.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "pikachu"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"], ["created_at", "2022-01-14 13:16:58.182328"], ["updated_at", "2022-01-14 13:16:58.182328"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "raichu"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"], ["created_at", "2022-01-14 13:16:58.184624"], ["updated_at", "2022-01-14 13:16:58.184624"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/26.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sandshrew"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"], ["created_at", "2022-01-14 13:16:58.186850"], ["updated_at", "2022-01-14 13:16:58.186850"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/27.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sandslash"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"], ["created_at", "2022-01-14 13:16:58.189361"], ["updated_at", "2022-01-14 13:16:58.189361"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/28.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidoran-f"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"], ["created_at", "2022-01-14 13:16:58.191976"], ["updated_at", "2022-01-14 13:16:58.191976"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/29.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidorina"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"], ["created_at", "2022-01-14 13:16:58.194154"], ["updated_at", "2022-01-14 13:16:58.194154"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/30.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.4ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidoqueen"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"], ["created_at", "2022-01-14 13:16:58.196791"], ["updated_at", "2022-01-14 13:16:58.196791"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/31.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidoran-m"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png"], ["created_at", "2022-01-14 13:16:58.199394"], ["updated_at", "2022-01-14 13:16:58.199394"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/32.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidorino"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png"], ["created_at", "2022-01-14 13:16:58.201607"], ["updated_at", "2022-01-14 13:16:58.201607"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/33.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "nidoking"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png"], ["created_at", "2022-01-14 13:16:58.203768"], ["updated_at", "2022-01-14 13:16:58.203768"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/34.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "clefairy"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"], ["created_at", "2022-01-14 13:16:58.205870"], ["updated_at", "2022-01-14 13:16:58.205870"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/35.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "clefable"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png"], ["created_at", "2022-01-14 13:16:58.207839"], ["updated_at", "2022-01-14 13:16:58.207839"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/36.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "vulpix"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png"], ["created_at", "2022-01-14 13:16:58.209695"], ["updated_at", "2022-01-14 13:16:58.209695"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/37.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ninetales"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png"], ["created_at", "2022-01-14 13:16:58.211747"], ["updated_at", "2022-01-14 13:16:58.211747"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/38.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "jigglypuff"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png"], ["created_at", "2022-01-14 13:16:58.213578"], ["updated_at", "2022-01-14 13:16:58.213578"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/39.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "wigglytuff"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png"], ["created_at", "2022-01-14 13:16:58.215503"], ["updated_at", "2022-01-14 13:16:58.215503"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/40.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "zubat"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png"], ["created_at", "2022-01-14 13:16:58.217270"], ["updated_at", "2022-01-14 13:16:58.217270"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/41.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "golbat"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png"], ["created_at", "2022-01-14 13:16:58.219284"], ["updated_at", "2022-01-14 13:16:58.219284"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/42.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "oddish"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"], ["created_at", "2022-01-14 13:16:58.221178"], ["updated_at", "2022-01-14 13:16:58.221178"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/43.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "gloom"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png"], ["created_at", "2022-01-14 13:16:58.223010"], ["updated_at", "2022-01-14 13:16:58.223010"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/44.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "vileplume"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"], ["created_at", "2022-01-14 13:16:58.225233"], ["updated_at", "2022-01-14 13:16:58.225233"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/45.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "paras"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png"], ["created_at", "2022-01-14 13:16:58.228804"], ["updated_at", "2022-01-14 13:16:58.228804"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/46.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "parasect"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"], ["created_at", "2022-01-14 13:16:58.232032"], ["updated_at", "2022-01-14 13:16:58.232032"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/47.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "venonat"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png"], ["created_at", "2022-01-14 13:16:58.234110"], ["updated_at", "2022-01-14 13:16:58.234110"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/48.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "venomoth"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"], ["created_at", "2022-01-14 13:16:58.237370"], ["updated_at", "2022-01-14 13:16:58.237370"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/49.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "diglett"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"], ["created_at", "2022-01-14 13:16:58.240629"], ["updated_at", "2022-01-14 13:16:58.240629"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/50.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dugtrio"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png"], ["created_at", "2022-01-14 13:16:58.242752"], ["updated_at", "2022-01-14 13:16:58.242752"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/51.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "meowth"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png"], ["created_at", "2022-01-14 13:16:58.246139"], ["updated_at", "2022-01-14 13:16:58.246139"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/52.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "persian"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png"], ["created_at", "2022-01-14 13:16:58.249463"], ["updated_at", "2022-01-14 13:16:58.249463"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/53.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "psyduck"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png"], ["created_at", "2022-01-14 13:16:58.251532"], ["updated_at", "2022-01-14 13:16:58.251532"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/54.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "golduck"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png"], ["created_at", "2022-01-14 13:16:58.256117"], ["updated_at", "2022-01-14 13:16:58.256117"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/55.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "mankey"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png"], ["created_at", "2022-01-14 13:16:58.259450"], ["updated_at", "2022-01-14 13:16:58.259450"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/56.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "primeape"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png"], ["created_at", "2022-01-14 13:16:58.261490"], ["updated_at", "2022-01-14 13:16:58.261490"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/57.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "growlithe"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png"], ["created_at", "2022-01-14 13:16:58.264780"], ["updated_at", "2022-01-14 13:16:58.264780"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/58.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "arcanine"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png"], ["created_at", "2022-01-14 13:16:58.267725"], ["updated_at", "2022-01-14 13:16:58.267725"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/59.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "poliwag"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png"], ["created_at", "2022-01-14 13:16:58.269489"], ["updated_at", "2022-01-14 13:16:58.269489"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/60.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "poliwhirl"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"], ["created_at", "2022-01-14 13:16:58.272418"], ["updated_at", "2022-01-14 13:16:58.272418"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/61.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "poliwrath"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"], ["created_at", "2022-01-14 13:16:58.275597"], ["updated_at", "2022-01-14 13:16:58.275597"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/62.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "abra"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png"], ["created_at", "2022-01-14 13:16:58.277612"], ["updated_at", "2022-01-14 13:16:58.277612"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/63.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kadabra"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png"], ["created_at", "2022-01-14 13:16:58.280481"], ["updated_at", "2022-01-14 13:16:58.280481"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/64.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "alakazam"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png"], ["created_at", "2022-01-14 13:16:58.283388"], ["updated_at", "2022-01-14 13:16:58.283388"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/65.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "machop"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png"], ["created_at", "2022-01-14 13:16:58.285416"], ["updated_at", "2022-01-14 13:16:58.285416"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/66.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "machoke"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png"], ["created_at", "2022-01-14 13:16:58.288635"], ["updated_at", "2022-01-14 13:16:58.288635"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/67.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "machamp"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png"], ["created_at", "2022-01-14 13:16:58.291978"], ["updated_at", "2022-01-14 13:16:58.291978"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/68.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "bellsprout"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png"], ["created_at", "2022-01-14 13:16:58.294146"], ["updated_at", "2022-01-14 13:16:58.294146"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/69.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "weepinbell"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png"], ["created_at", "2022-01-14 13:16:58.298461"], ["updated_at", "2022-01-14 13:16:58.298461"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/70.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "victreebel"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png"], ["created_at", "2022-01-14 13:16:58.301521"], ["updated_at", "2022-01-14 13:16:58.301521"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/71.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tentacool"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png"], ["created_at", "2022-01-14 13:16:58.303367"], ["updated_at", "2022-01-14 13:16:58.303367"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/72.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tentacruel"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"], ["created_at", "2022-01-14 13:16:58.306602"], ["updated_at", "2022-01-14 13:16:58.306602"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/73.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "geodude"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png"], ["created_at", "2022-01-14 13:16:58.309948"], ["updated_at", "2022-01-14 13:16:58.309948"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/74.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "graveler"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png"], ["created_at", "2022-01-14 13:16:58.311879"], ["updated_at", "2022-01-14 13:16:58.311879"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/75.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "golem"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png"], ["created_at", "2022-01-14 13:16:58.315127"], ["updated_at", "2022-01-14 13:16:58.315127"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/76.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ponyta"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png"], ["created_at", "2022-01-14 13:16:58.318626"], ["updated_at", "2022-01-14 13:16:58.318626"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/77.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rapidash"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png"], ["created_at", "2022-01-14 13:16:58.320469"], ["updated_at", "2022-01-14 13:16:58.320469"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/78.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "slowpoke"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png"], ["created_at", "2022-01-14 13:16:58.323569"], ["updated_at", "2022-01-14 13:16:58.323569"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/79.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "slowbro"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png"], ["created_at", "2022-01-14 13:16:58.326485"], ["updated_at", "2022-01-14 13:16:58.326485"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/80.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "magnemite"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png"], ["created_at", "2022-01-14 13:16:58.328155"], ["updated_at", "2022-01-14 13:16:58.328155"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/81.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "magneton"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png"], ["created_at", "2022-01-14 13:16:58.331125"], ["updated_at", "2022-01-14 13:16:58.331125"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/82.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "farfetchd"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png"], ["created_at", "2022-01-14 13:16:58.334247"], ["updated_at", "2022-01-14 13:16:58.334247"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/83.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "doduo"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png"], ["created_at", "2022-01-14 13:16:58.336022"], ["updated_at", "2022-01-14 13:16:58.336022"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/84.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dodrio"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"], ["created_at", "2022-01-14 13:16:58.339216"], ["updated_at", "2022-01-14 13:16:58.339216"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/85.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "seel"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png"], ["created_at", "2022-01-14 13:16:58.343040"], ["updated_at", "2022-01-14 13:16:58.343040"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/86.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dewgong"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png"], ["created_at", "2022-01-14 13:16:58.345106"], ["updated_at", "2022-01-14 13:16:58.345106"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/87.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "grimer"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png"], ["created_at", "2022-01-14 13:16:58.349745"], ["updated_at", "2022-01-14 13:16:58.349745"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/88.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "muk"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png"], ["created_at", "2022-01-14 13:16:58.353076"], ["updated_at", "2022-01-14 13:16:58.353076"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/89.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "shellder"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png"], ["created_at", "2022-01-14 13:16:58.354917"], ["updated_at", "2022-01-14 13:16:58.354917"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/90.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "cloyster"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png"], ["created_at", "2022-01-14 13:16:58.357134"], ["updated_at", "2022-01-14 13:16:58.357134"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/91.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "gastly"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png"], ["created_at", "2022-01-14 13:16:58.359519"], ["updated_at", "2022-01-14 13:16:58.359519"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/92.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "haunter"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png"], ["created_at", "2022-01-14 13:16:58.361511"], ["updated_at", "2022-01-14 13:16:58.361511"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/93.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "gengar"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"], ["created_at", "2022-01-14 13:16:58.363464"], ["updated_at", "2022-01-14 13:16:58.363464"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/94.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "onix"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"], ["created_at", "2022-01-14 13:16:58.365273"], ["updated_at", "2022-01-14 13:16:58.365273"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/95.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "drowzee"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png"], ["created_at", "2022-01-14 13:16:58.367302"], ["updated_at", "2022-01-14 13:16:58.367302"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/96.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "hypno"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png"], ["created_at", "2022-01-14 13:16:58.369295"], ["updated_at", "2022-01-14 13:16:58.369295"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/97.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "krabby"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png"], ["created_at", "2022-01-14 13:16:58.371040"], ["updated_at", "2022-01-14 13:16:58.371040"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/98.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kingler"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png"], ["created_at", "2022-01-14 13:16:58.374768"], ["updated_at", "2022-01-14 13:16:58.374768"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/99.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "voltorb"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"], ["created_at", "2022-01-14 13:16:58.376947"], ["updated_at", "2022-01-14 13:16:58.376947"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/100.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "electrode"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png"], ["created_at", "2022-01-14 13:16:58.379220"], ["updated_at", "2022-01-14 13:16:58.379220"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/101.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "exeggcute"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png"], ["created_at", "2022-01-14 13:16:58.381321"], ["updated_at", "2022-01-14 13:16:58.381321"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/102.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "exeggutor"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png"], ["created_at", "2022-01-14 13:16:58.383165"], ["updated_at", "2022-01-14 13:16:58.383165"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/103.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "cubone"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png"], ["created_at", "2022-01-14 13:16:58.385571"], ["updated_at", "2022-01-14 13:16:58.385571"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/104.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "marowak"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png"], ["created_at", "2022-01-14 13:16:58.387928"], ["updated_at", "2022-01-14 13:16:58.387928"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/105.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "hitmonlee"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png"], ["created_at", "2022-01-14 13:16:58.390202"], ["updated_at", "2022-01-14 13:16:58.390202"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/106.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "hitmonchan"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png"], ["created_at", "2022-01-14 13:16:58.392597"], ["updated_at", "2022-01-14 13:16:58.392597"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/107.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "lickitung"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png"], ["created_at", "2022-01-14 13:16:58.394667"], ["updated_at", "2022-01-14 13:16:58.394667"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/108.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "koffing"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png"], ["created_at", "2022-01-14 13:16:58.396966"], ["updated_at", "2022-01-14 13:16:58.396966"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/109.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "weezing"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png"], ["created_at", "2022-01-14 13:16:58.399265"], ["updated_at", "2022-01-14 13:16:58.399265"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/110.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rhyhorn"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png"], ["created_at", "2022-01-14 13:16:58.401453"], ["updated_at", "2022-01-14 13:16:58.401453"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/111.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rhydon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png"], ["created_at", "2022-01-14 13:16:58.403305"], ["updated_at", "2022-01-14 13:16:58.403305"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/112.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "chansey"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png"], ["created_at", "2022-01-14 13:16:58.405494"], ["updated_at", "2022-01-14 13:16:58.405494"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/113.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tangela"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png"], ["created_at", "2022-01-14 13:16:58.407893"], ["updated_at", "2022-01-14 13:16:58.407893"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/114.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kangaskhan"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"], ["created_at", "2022-01-14 13:16:58.410214"], ["updated_at", "2022-01-14 13:16:58.410214"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/115.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "horsea"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png"], ["created_at", "2022-01-14 13:16:58.412259"], ["updated_at", "2022-01-14 13:16:58.412259"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/116.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "seadra"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png"], ["created_at", "2022-01-14 13:16:58.414673"], ["updated_at", "2022-01-14 13:16:58.414673"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/117.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "goldeen"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png"], ["created_at", "2022-01-14 13:16:58.416981"], ["updated_at", "2022-01-14 13:16:58.416981"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/118.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "seaking"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png"], ["created_at", "2022-01-14 13:16:58.419242"], ["updated_at", "2022-01-14 13:16:58.419242"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/119.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "staryu"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png"], ["created_at", "2022-01-14 13:16:58.421593"], ["updated_at", "2022-01-14 13:16:58.421593"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/120.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "starmie"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"], ["created_at", "2022-01-14 13:16:58.423622"], ["updated_at", "2022-01-14 13:16:58.423622"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/121.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "mr-mime"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png"], ["created_at", "2022-01-14 13:16:58.425928"], ["updated_at", "2022-01-14 13:16:58.425928"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/122.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "scyther"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png"], ["created_at", "2022-01-14 13:16:58.428216"], ["updated_at", "2022-01-14 13:16:58.428216"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/123.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "jynx"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png"], ["created_at", "2022-01-14 13:16:58.430231"], ["updated_at", "2022-01-14 13:16:58.430231"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/124.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "electabuzz"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png"], ["created_at", "2022-01-14 13:16:58.432528"], ["updated_at", "2022-01-14 13:16:58.432528"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/125.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "magmar"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png"], ["created_at", "2022-01-14 13:16:58.434886"], ["updated_at", "2022-01-14 13:16:58.434886"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/126.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "pinsir"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png"], ["created_at", "2022-01-14 13:16:58.437114"], ["updated_at", "2022-01-14 13:16:58.437114"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/127.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tauros"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png"], ["created_at", "2022-01-14 13:16:58.439041"], ["updated_at", "2022-01-14 13:16:58.439041"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/128.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "magikarp"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png"], ["created_at", "2022-01-14 13:16:58.441254"], ["updated_at", "2022-01-14 13:16:58.441254"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/129.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "gyarados"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"], ["created_at", "2022-01-14 13:16:58.443544"], ["updated_at", "2022-01-14 13:16:58.443544"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/130.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "lapras"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"], ["created_at", "2022-01-14 13:16:58.445806"], ["updated_at", "2022-01-14 13:16:58.445806"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/131.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ditto"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"], ["created_at", "2022-01-14 13:16:58.447780"], ["updated_at", "2022-01-14 13:16:58.447780"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/132.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "eevee"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"], ["created_at", "2022-01-14 13:16:58.450105"], ["updated_at", "2022-01-14 13:16:58.450105"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/133.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "vaporeon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"], ["created_at", "2022-01-14 13:16:58.452195"], ["updated_at", "2022-01-14 13:16:58.452195"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/134.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "jolteon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"], ["created_at", "2022-01-14 13:16:58.454455"], ["updated_at", "2022-01-14 13:16:58.454455"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/135.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "flareon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png"], ["created_at", "2022-01-14 13:16:58.456482"], ["updated_at", "2022-01-14 13:16:58.456482"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/136.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "porygon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png"], ["created_at", "2022-01-14 13:16:58.458675"], ["updated_at", "2022-01-14 13:16:58.458675"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/137.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "omanyte"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png"], ["created_at", "2022-01-14 13:16:58.460994"], ["updated_at", "2022-01-14 13:16:58.460994"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/138.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "omastar"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png"], ["created_at", "2022-01-14 13:16:58.462912"], ["updated_at", "2022-01-14 13:16:58.462912"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/139.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kabuto"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png"], ["created_at", "2022-01-14 13:16:58.465140"], ["updated_at", "2022-01-14 13:16:58.465140"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/140.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kabutops"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png"], ["created_at", "2022-01-14 13:16:58.467506"], ["updated_at", "2022-01-14 13:16:58.467506"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/141.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "aerodactyl"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png"], ["created_at", "2022-01-14 13:16:58.469449"], ["updated_at", "2022-01-14 13:16:58.469449"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/142.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "snorlax"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"], ["created_at", "2022-01-14 13:16:58.471607"], ["updated_at", "2022-01-14 13:16:58.471607"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/143.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "articuno"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png"], ["created_at", "2022-01-14 13:16:58.473747"], ["updated_at", "2022-01-14 13:16:58.473747"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/144.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "zapdos"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png"], ["created_at", "2022-01-14 13:16:58.475801"], ["updated_at", "2022-01-14 13:16:58.475801"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/145.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "moltres"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"], ["created_at", "2022-01-14 13:16:58.477508"], ["updated_at", "2022-01-14 13:16:58.477508"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dratini"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png"], ["created_at", "2022-01-14 13:16:58.479473"], ["updated_at", "2022-01-14 13:16:58.479473"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/147.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dragonair"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"], ["created_at", "2022-01-14 13:16:58.481307"], ["updated_at", "2022-01-14 13:16:58.481307"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/148.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "dragonite"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png"], ["created_at", "2022-01-14 13:16:58.482916"], ["updated_at", "2022-01-14 13:16:58.482916"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/149.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "mewtwo"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"], ["created_at", "2022-01-14 13:16:58.484819"], ["updated_at", "2022-01-14 13:16:58.484819"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/150.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mPokeDatum Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_data" ("name", "picture", "created_at", "updated_at", "animation") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "mew"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"], ["created_at", "2022-01-14 13:16:58.486640"], ["updated_at", "2022-01-14 13:16:58.486640"], ["animation", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/151.gif"]]
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:8:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.5ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "stench"], ["description", "This Pokémon's damaging moves have a 10% chance to make the target flinch with each hit if they do not already cause flinching as a secondary effect.\n\nThis ability does not stack with a held item.\n\nOverworld: The wild encounter rate is halved while this Pokémon is first in the party."], ["created_at", "2022-01-14 13:16:58.498508"], ["updated_at", "2022-01-14 13:16:58.498508"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.2ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "drizzle"], ["description", "The weather changes to rain when this Pokémon enters battle and does not end unless replaced by another weather condition.\n\nIf multiple Pokémon with this ability, drought, sand stream, or snow warning are sent out at the same time, the abilities will activate in order of Speed, respecting trick room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay."], ["created_at", "2022-01-14 13:16:58.501070"], ["updated_at", "2022-01-14 13:16:58.501070"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.1ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "speed-boost"], ["description", "This Pokémon's Speed rises one stage after each turn."], ["created_at", "2022-01-14 13:16:58.503217"], ["updated_at", "2022-01-14 13:16:58.503217"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.1ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "battle-armor"], ["description", "Moves cannot score critical hits against this Pokémon.\n\nThis ability functions identically to shell armor."], ["created_at", "2022-01-14 13:16:58.505211"], ["updated_at", "2022-01-14 13:16:58.505211"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.2ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "sturdy"], ["description", "When this Pokémon is at full HP, any hit that would knock it out will instead leave it with 1 HP.  Regardless of its current HP, it is also immune to the one-hit KO moves: fissure, guillotine, horn drill, and sheer cold.\n\nIf this Pokémon is holding a focus sash, this ability takes precedence and the item will not be consumed."], ["created_at", "2022-01-14 13:16:58.507069"], ["updated_at", "2022-01-14 13:16:58.507069"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.3ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "damp"], ["description", "While this Pokémon is in battle, self destruct and explosion will fail and aftermath will not take effect."], ["created_at", "2022-01-14 13:16:58.509220"], ["updated_at", "2022-01-14 13:16:58.509220"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.1ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "limber"], ["description", "This Pokémon cannot be paralyzed.\n\nIf a Pokémon is paralyzed and acquires this ability, its paralysis is healed; this includes when regaining a lost ability upon leaving battle."], ["created_at", "2022-01-14 13:16:58.511601"], ["updated_at", "2022-01-14 13:16:58.511601"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.2ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "sand-veil"], ["description", "During a sandstorm, this Pokémon has 1.25× its evasion, and it does not take sandstorm damage regardless of type.\n\nThe evasion bonus does not count as a stat modifier.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a sandstorm."], ["created_at", "2022-01-14 13:16:58.513821"], ["updated_at", "2022-01-14 13:16:58.513821"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.1ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "static"], ["description", "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being paralyzed.\n\nPokémon that are immune to electric-type moves can still be paralyzed by this ability.\n\nOverworld: If the lead Pokémon has this ability, there is a 50% chance that encounters will be with an electric Pokémon, if applicable."], ["created_at", "2022-01-14 13:16:58.515919"], ["updated_at", "2022-01-14 13:16:58.515919"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mAbility Create (0.1ms)[0m  [1m[32mINSERT INTO "abilities" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "volt-absorb"], ["description", "Whenever an electric-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nThis ability will not take effect if this Pokémon is ground-type and thus immune to Electric moves.  Electric moves will ignore this Pokémon's substitute.\n\nThis effect includes non-damaging moves, i.e. thunder wave."], ["created_at", "2022-01-14 13:16:58.518211"], ["updated_at", "2022-01-14 13:16:58.518211"]]
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:9:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.4ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "normal"], ["double_damage_from", "{fighting}"], ["double_damage_to", "{}"], ["half_damage_from", "{}"], ["half_damage_to", "{rock,steel}"], ["no_damage_from", "{ghost}"], ["no_damage_to", "{ghost}"], ["created_at", "2022-01-14 13:16:58.529378"], ["updated_at", "2022-01-14 13:16:58.529378"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "fighting"], ["double_damage_from", "{flying,psychic,fairy}"], ["double_damage_to", "{normal,rock,steel,ice,dark}"], ["half_damage_from", "{rock,bug,dark}"], ["half_damage_to", "{flying,poison,bug,psychic,fairy}"], ["no_damage_from", "{}"], ["no_damage_to", "{ghost}"], ["created_at", "2022-01-14 13:16:58.532204"], ["updated_at", "2022-01-14 13:16:58.532204"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "flying"], ["double_damage_from", "{rock,electric,ice}"], ["double_damage_to", "{fighting,bug,grass}"], ["half_damage_from", "{fighting,bug,grass}"], ["half_damage_to", "{rock,steel,electric}"], ["no_damage_from", "{ground}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.534432"], ["updated_at", "2022-01-14 13:16:58.534432"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "poison"], ["double_damage_from", "{ground,psychic}"], ["double_damage_to", "{grass,fairy}"], ["half_damage_from", "{fighting,poison,bug,grass,fairy}"], ["half_damage_to", "{poison,ground,rock,ghost}"], ["no_damage_from", "{}"], ["no_damage_to", "{steel}"], ["created_at", "2022-01-14 13:16:58.536473"], ["updated_at", "2022-01-14 13:16:58.536473"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "ground"], ["double_damage_from", "{water,grass,ice}"], ["double_damage_to", "{poison,rock,steel,fire,electric}"], ["half_damage_from", "{poison,rock}"], ["half_damage_to", "{bug,grass}"], ["no_damage_from", "{electric}"], ["no_damage_to", "{flying}"], ["created_at", "2022-01-14 13:16:58.539073"], ["updated_at", "2022-01-14 13:16:58.539073"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "rock"], ["double_damage_from", "{fighting,ground,steel,water,grass}"], ["double_damage_to", "{flying,bug,fire,ice}"], ["half_damage_from", "{normal,flying,poison,fire}"], ["half_damage_to", "{fighting,ground,steel}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.541522"], ["updated_at", "2022-01-14 13:16:58.541522"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "bug"], ["double_damage_from", "{flying,rock,fire}"], ["double_damage_to", "{grass,psychic,dark}"], ["half_damage_from", "{fighting,ground,grass}"], ["half_damage_to", "{fighting,flying,poison,ghost,steel,fire,fairy}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.543963"], ["updated_at", "2022-01-14 13:16:58.543963"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "ghost"], ["double_damage_from", "{ghost,dark}"], ["double_damage_to", "{ghost,psychic}"], ["half_damage_from", "{poison,bug}"], ["half_damage_to", "{dark}"], ["no_damage_from", "{normal,fighting}"], ["no_damage_to", "{normal}"], ["created_at", "2022-01-14 13:16:58.546009"], ["updated_at", "2022-01-14 13:16:58.546009"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "steel"], ["double_damage_from", "{fighting,ground,fire}"], ["double_damage_to", "{rock,ice,fairy}"], ["half_damage_from", "{normal,flying,rock,bug,steel,grass,psychic,ice,dragon,fairy}"], ["half_damage_to", "{steel,fire,water,electric}"], ["no_damage_from", "{poison}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.548149"], ["updated_at", "2022-01-14 13:16:58.548149"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "fire"], ["double_damage_from", "{ground,rock,water}"], ["double_damage_to", "{bug,steel,grass,ice}"], ["half_damage_from", "{bug,steel,fire,grass,ice,fairy}"], ["half_damage_to", "{rock,fire,water,dragon}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.550271"], ["updated_at", "2022-01-14 13:16:58.550271"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.3ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "water"], ["double_damage_from", "{grass,electric}"], ["double_damage_to", "{ground,rock,fire}"], ["half_damage_from", "{steel,fire,water,ice}"], ["half_damage_to", "{water,grass,dragon}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.552394"], ["updated_at", "2022-01-14 13:16:58.552394"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "grass"], ["double_damage_from", "{flying,poison,bug,fire,ice}"], ["double_damage_to", "{ground,rock,water}"], ["half_damage_from", "{ground,water,grass,electric}"], ["half_damage_to", "{flying,poison,bug,steel,fire,grass,dragon}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.554690"], ["updated_at", "2022-01-14 13:16:58.554690"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "electric"], ["double_damage_from", "{ground}"], ["double_damage_to", "{flying,water}"], ["half_damage_from", "{flying,steel,electric}"], ["half_damage_to", "{grass,electric,dragon}"], ["no_damage_from", "{}"], ["no_damage_to", "{ground}"], ["created_at", "2022-01-14 13:16:58.557124"], ["updated_at", "2022-01-14 13:16:58.557124"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "psychic"], ["double_damage_from", "{bug,ghost,dark}"], ["double_damage_to", "{fighting,poison}"], ["half_damage_from", "{fighting,psychic}"], ["half_damage_to", "{steel,psychic}"], ["no_damage_from", "{}"], ["no_damage_to", "{dark}"], ["created_at", "2022-01-14 13:16:58.559414"], ["updated_at", "2022-01-14 13:16:58.559414"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "ice"], ["double_damage_from", "{fighting,rock,steel,fire}"], ["double_damage_to", "{flying,ground,grass,dragon}"], ["half_damage_from", "{ice}"], ["half_damage_to", "{steel,fire,water,ice}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.561708"], ["updated_at", "2022-01-14 13:16:58.561708"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.1ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "dragon"], ["double_damage_from", "{ice,dragon,fairy}"], ["double_damage_to", "{dragon}"], ["half_damage_from", "{fire,water,grass,electric}"], ["half_damage_to", "{steel}"], ["no_damage_from", "{}"], ["no_damage_to", "{fairy}"], ["created_at", "2022-01-14 13:16:58.563623"], ["updated_at", "2022-01-14 13:16:58.563623"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "dark"], ["double_damage_from", "{fighting,bug,fairy}"], ["double_damage_to", "{ghost,psychic}"], ["half_damage_from", "{ghost,dark}"], ["half_damage_to", "{fighting,dark,fairy}"], ["no_damage_from", "{psychic}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.565632"], ["updated_at", "2022-01-14 13:16:58.565632"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "fairy"], ["double_damage_from", "{poison,steel}"], ["double_damage_to", "{fighting,dragon,dark}"], ["half_damage_from", "{fighting,bug,dark}"], ["half_damage_to", "{poison,steel,fire}"], ["no_damage_from", "{dragon}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.568045"], ["updated_at", "2022-01-14 13:16:58.568045"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "unknown"], ["double_damage_from", "{}"], ["double_damage_to", "{}"], ["half_damage_from", "{}"], ["half_damage_to", "{}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.570415"], ["updated_at", "2022-01-14 13:16:58.570415"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mPokeType Create (0.2ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "double_damage_from", "double_damage_to", "half_damage_from", "half_damage_to", "no_damage_from", "no_damage_to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "shadow"], ["double_damage_from", "{}"], ["double_damage_to", "{}"], ["half_damage_from", "{}"], ["half_damage_to", "{}"], ["no_damage_from", "{}"], ["no_damage_to", "{}"], ["created_at", "2022-01-14 13:16:58.572652"], ["updated_at", "2022-01-14 13:16:58.572652"]]
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/setup.rake:10:in `block in <main>'
+Started GET "/" for ::1 at 2022-01-14 07:17:20 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (1.2ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:15
+  Rendered trainers/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1672)
+  Rendered layout layouts/application.html.erb (Duration: 61.0ms | Allocations: 10293)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 1.2ms | Allocations: 15301)
+
+
+  
+ActionView::Template::Error (Error: no mixin named small-screen
+        on line 7:14 of app/assets/stylesheets/pokemons.scss
+>>     @include small-screen {
+
+   -------------^
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+  
+app/assets/stylesheets/pokemons.scss:7
+app/views/layouts/application.html.erb:9
+Started GET "/" for ::1 at 2022-01-14 07:17:55 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (1.2ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:15
+  Rendered trainers/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1075)
+  Rendered layout layouts/application.html.erb (Duration: 22.9ms | Allocations: 7908)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.2ms | Allocations: 8383)
+
+
+  
+ActionView::Template::Error (Error: File to import not found or unreadable: utilties.
+        on line 4:1 of app/assets/stylesheets/pokemons.scss
+>> @import 'utilties';
+
+   ^
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+  
+app/assets/stylesheets/pokemons.scss:4
+app/views/layouts/application.html.erb:9
+Started GET "/" for ::1 at 2022-01-14 07:18:20 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:15
+  Rendered trainers/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 946)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 85.1ms | Allocations: 34367)
+Completed 200 OK in 86ms (Views: 84.7ms | ActiveRecord: 0.8ms | Allocations: 34821)
+
+
+Started GET "/trainers/new" for ::1 at 2022-01-14 07:18:22 -0600
+Processing by TrainersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/new.html.erb within layouts/application
+  Rendered trainers/_form.html.erb (Duration: 308.5ms | Allocations: 340034)
+  Rendered trainers/new.html.erb within layouts/application (Duration: 310.5ms | Allocations: 340472)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 315.5ms | Allocations: 344333)
+Completed 200 OK in 341ms (Views: 316.0ms | ActiveRecord: 12.8ms | Allocations: 348770)
+
+
+Started POST "/trainers" for ::1 at 2022-01-14 07:18:26 -0600
+Processing by TrainersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "trainer"=>{"name"=>"gab"}, "commit"=>"Create Trainer"}
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/trainers_controller.rb:27:in `block in create'
+  [1m[36mTrainer Create (1.8ms)[0m  [1m[32mINSERT INTO "trainers" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "gab"], ["created_at", "2022-01-14 13:18:26.448142"], ["updated_at", "2022-01-14 13:18:26.448142"]]
+  ↳ app/controllers/trainers_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/trainers_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/trainers/1
+Completed 302 Found in 18ms (ActiveRecord: 8.8ms | Allocations: 3898)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:18:26 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (1.0ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  Rendered trainers/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1273)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1354)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 2.1ms | Allocations: 3570)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trainer.name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @trainer.picture %>
+</p>
+
+<div>
+  <% @trainer.pokemons.each do |poke| %>
+    <%= render "shared/pokemon
+  <% end %>
+<div>
+
+<%= link_to 'Add new pokemon', new_pokemon_path %>
+<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+<%= link_to 'Back', trainers_path %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Name:</strong>
+5:      <%= @trainer.name %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Picture:</strong>
+10:      <%= @trainer.picture %>
+11:    </p>
+12:    
+13:    <div>
+14:      <% @trainer.pokemons.each do |poke| %>
+15:        <%= render "shared/pokemon
+16:      <% end %>
+17:    <div>
+18:    
+19:    <%= link_to 'Add new pokemon', new_pokemon_path %>
+20:    <%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+21:    <%= link_to 'Back', trainers_path %>
+  
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:19:15 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  Rendered trainers/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1206)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1284)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.7ms | Allocations: 2467)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trainer.name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @trainer.picture %>
+</p>
+
+<div>
+  <% @trainer.pokemons.each do |poke| %>
+    <%= render "shared/pokemon
+  <% end %>
+<div>
+
+<%= link_to 'Add new pokemon', new_pokemon_path %>
+<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+<%= link_to 'Back', trainers_path %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Name:</strong>
+5:      <%= @trainer.name %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Picture:</strong>
+10:      <%= @trainer.picture %>
+11:    </p>
+12:    
+13:    <div>
+14:      <% @trainer.pokemons.each do |poke| %>
+15:        <%= render "shared/pokemon
+16:      <% end %>
+17:    <div>
+18:    
+19:    <%= link_to 'Add new pokemon', new_pokemon_path %>
+20:    <%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+21:    <%= link_to 'Back', trainers_path %>
+  
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/trainers/" for ::1 at 2022-01-14 07:19:19 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:15
+  Rendered trainers/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 4961)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.8ms | Allocations: 5389)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:19:21 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  Rendered trainers/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1206)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1283)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.7ms | Allocations: 2389)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trainer.name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @trainer.picture %>
+</p>
+
+<div>
+  <% @trainer.pokemons.each do |poke| %>
+    <%= render "shared/pokemon
+  <% end %>
+<div>
+
+<%= link_to 'Add new pokemon', new_pokemon_path %>
+<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+<%= link_to 'Back', trainers_path %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Name:</strong>
+5:      <%= @trainer.name %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Picture:</strong>
+10:      <%= @trainer.picture %>
+11:    </p>
+12:    
+13:    <div>
+14:      <% @trainer.pokemons.each do |poke| %>
+15:        <%= render "shared/pokemon
+16:      <% end %>
+17:    <div>
+18:    
+19:    <%= link_to 'Add new pokemon', new_pokemon_path %>
+20:    <%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+21:    <%= link_to 'Back', trainers_path %>
+  
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+app/views/trainers/show.html.erb:24: unterminated string meets end of file
+app/views/trainers/show.html.erb:24: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:20:52 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered trainers/show.html.erb within layouts/application (Duration: 26.7ms | Allocations: 10297)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 14327)
+Completed 200 OK in 43ms (Views: 35.8ms | ActiveRecord: 4.4ms | Allocations: 16327)
+
+
+Started GET "/pokemons/new" for ::1 at 2022-01-14 07:20:55 -0600
+Processing by PokemonsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/new.html.erb within layouts/application
+  [1m[36mPokeDatum Load (1.7ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data"[0m
+  ↳ app/views/pokemons/_form.html.erb:16
+  [1m[36mTrainer Load (0.9ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/pokemons/_form.html.erb:21
+  Rendered pokemons/_form.html.erb (Duration: 23.1ms | Allocations: 11119)
+  Rendered pokemons/new.html.erb within layouts/application (Duration: 24.6ms | Allocations: 11570)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 15488)
+Completed 200 OK in 46ms (Views: 27.0ms | ActiveRecord: 9.8ms | Allocations: 20602)
+
+
+Started POST "/pokemons" for ::1 at 2022-01-14 07:20:56 -0600
+Processing by PokemonsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "pokemon"=>{"name"=>"bulbasaur", "trainer_id"=>"1"}, "commit"=>"Create Pokemon"}
+  [1m[36mPokeDatum Load (1.0ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data" WHERE "poke_data"."name" = $1 LIMIT $2[0m  [["name", "bulbasaur"], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mTrainer Load (1.1ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mPokemon Create (1.3ms)[0m  [1m[32mINSERT INTO "pokemons" ("name", "picture", "trainer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "bulbasaur"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"], ["trainer_id", 1], ["created_at", "2022-01-14 13:20:56.746438"], ["updated_at", "2022-01-14 13:20:56.746438"]]
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+Redirected to http://localhost:3000/pokemons/1
+Completed 302 Found in 15ms (ActiveRecord: 5.4ms | Allocations: 6648)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 07:20:56 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.4ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 39.5ms | Allocations: 22210)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.9ms | Allocations: 25977)
+Completed 200 OK in 53ms (Views: 33.6ms | ActiveRecord: 13.4ms | Allocations: 27533)
+
+
+Started GET "/pokemons/new" for ::1 at 2022-01-14 07:21:03 -0600
+Processing by PokemonsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/new.html.erb within layouts/application
+  [1m[36mPokeDatum Load (1.1ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data"[0m
+  ↳ app/views/pokemons/_form.html.erb:16
+  [1m[36mTrainer Load (1.1ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/pokemons/_form.html.erb:21
+  Rendered pokemons/_form.html.erb (Duration: 11.9ms | Allocations: 6659)
+  Rendered pokemons/new.html.erb within layouts/application (Duration: 12.1ms | Allocations: 6779)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 10488)
+Completed 200 OK in 20ms (Views: 17.0ms | ActiveRecord: 2.2ms | Allocations: 10966)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:21:04 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (1.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2310)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2387)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.9ms | Allocations: 4105)
+
+
+  
+ActionView::Template::Error (Missing partial shared/_pokemon with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/gabriel.rendon/Documents/pokedex/app/views"
+  * "/Users/gabriel.rendon/.rbenv/versions/3.1.0/lib/ruby/gems/3.1.0/gems/devise-4.8.1/app/views"
+  * "/Users/gabriel.rendon/.rbenv/versions/3.1.0/lib/ruby/gems/3.1.0/gems/actiontext-6.1.4.4/app/views"
+):
+    12: 
+    13: <div>
+    14:   <% @trainer.pokemons.each do |poke| %>
+    15:     <%= render "shared/pokemon", poke: poke %>
+    16:   <% end %>
+    17: <div>
+    18: 
+  
+app/views/trainers/show.html.erb:15
+app/views/trainers/show.html.erb:14
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:21:26 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.7ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1910)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 6010)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 2.0ms | Allocations: 8004)
+
+
