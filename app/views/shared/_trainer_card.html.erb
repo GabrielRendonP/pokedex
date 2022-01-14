@@ -1,0 +1,12 @@
+<div class="trainer-card">
+
+  <%= link_to trainer do %>
+      <div class="trainer-name">
+        <%= trainer.name %>
+      </div>
+  <% end %>
+  <div class="links-container">
+    <%= link_to 'Edit', edit_trainer_path(trainer) %>
+    <%= link_to 'Destroy', trainer, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
