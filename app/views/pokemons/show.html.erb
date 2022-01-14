@@ -47,6 +47,12 @@
   <h2> Type </h2>
 </div>
 
+<div>
+  <% @pokemon.poke_types.each do |p_types| %>
+    <%= p_types.name %>
+  <% end %>
+</div>
+
 <%= form_with url: add_type_path, method: :get do |form| %>
 
   <div class="field">

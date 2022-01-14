@@ -27984,3 +27984,720 @@ Processing by TrainersController#show as HTML
 Completed 200 OK in 20ms (Views: 11.8ms | ActiveRecord: 4.6ms | Allocations: 6530)
 
 
+Started GET "/pokemons/3" for ::1 at 2022-01-14 13:29:35 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.1ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 3]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 6467)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 10762)
+Completed 200 OK in 25ms (Views: 18.6ms | ActiveRecord: 4.1ms | Allocations: 11904)
+
+
+Started GET "/trainers" for ::1 at 2022-01-14 13:30:07 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (0.9ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:16
+  Rendered trainers/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1048)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 4866)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.9ms | Allocations: 5271)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 13:30:14 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 88)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1442)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 5805)
+Completed 200 OK in 20ms (Views: 16.2ms | ActiveRecord: 1.6ms | Allocations: 6942)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:30:19 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.2ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.1ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 12.5ms | Allocations: 6968)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 10767)
+Completed 200 OK in 36ms (Views: 29.1ms | ActiveRecord: 4.9ms | Allocations: 11909)
+
+
+Started GET "/add_ability?name=stench&poke_id=1&commit=Add+new+ability" for ::1 at 2022-01-14 13:30:34 -0600
+Processing by AbilitiesController#link_ability as HTML
+  Parameters: {"name"=>"stench", "poke_id"=>"1", "commit"=>"Add new ability"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/abilities_controller.rb:21:in `link_ability'
+  [1m[36mAbility Load (0.6ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" WHERE "abilities"."name" = $1 LIMIT $2[0m  [["name", "stench"], ["LIMIT", 1]]
+  ↳ app/controllers/abilities_controller.rb:22:in `link_ability'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/abilities_controller.rb:23:in `link_ability'
+  [1m[36mPokemon::HABTM_Abilities Create (2.2ms)[0m  [1m[32mINSERT INTO "abilities_pokemons" ("pokemon_id", "ability_id") VALUES ($1, $2)[0m  [["pokemon_id", 1], ["ability_id", 1]]
+  ↳ app/controllers/abilities_controller.rb:23:in `link_ability'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/abilities_controller.rb:23:in `link_ability'
+Redirected to http://localhost:3000/
+Completed 302 Found in 27ms (ActiveRecord: 7.5ms | Allocations: 6653)
+
+
+Started GET "/" for ::1 at 2022-01-14 13:30:34 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:16
+  Rendered trainers/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1085)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 5030)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.8ms | Allocations: 5475)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 13:30:37 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 105)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 88)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1886)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 5843)
+Completed 200 OK in 20ms (Views: 16.1ms | ActiveRecord: 1.7ms | Allocations: 6982)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:30:37 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.1ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.7ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 6982)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 10798)
+Completed 200 OK in 24ms (Views: 17.8ms | ActiveRecord: 4.7ms | Allocations: 11941)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:34:54 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.1ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 38.9ms | Allocations: 20122)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.1ms | Allocations: 24075)
+Completed 200 OK in 67ms (Views: 35.1ms | ActiveRecord: 20.1ms | Allocations: 32392)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:34:56 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokeType Load (0.7ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms | Allocations: 5738)
+
+
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `poke_types' for #<ActiveRecord::Relation [#<Pokemon id: 1, name: "bulbasaur", picture: "https://raw.githubusercontent.com/PokeAPI/sprites/...", trainer_id: 1, created_at: "2022-01-14 13:20:56.746438000 +0000", updated_at: "2022-01-14 13:20:56.746438000 +0000", description: nil>]>):
+  
+app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7471616722998446445)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateJoinTablePokemonsPokeTypes (20220114193808)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "poke_types_pokemons" ("pokemon_id" bigint NOT NULL, "poke_type_id" bigint NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_poke_types_pokemons_on_pokemon_id_and_poke_type_id" ON "poke_types_pokemons" ("pokemon_id", "poke_type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220114193808"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7471616722998446445)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokeType Load (0.6ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" INNER JOIN "poke_types_pokemons" ON "poke_types"."id" = "poke_types_pokemons"."poke_type_id" WHERE "poke_types_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:38:52 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 38.3ms | Allocations: 21717)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.7ms | Allocations: 25685)
+Completed 200 OK in 62ms (Views: 31.3ms | ActiveRecord: 18.7ms | Allocations: 35153)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:38:55 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 6561)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 10284)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 3.2ms | Allocations: 11532)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:38:56 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.9ms | Allocations: 5569)
+
+
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `poke_types' for #<ActiveRecord::Relation [#<Pokemon id: 1, name: "bulbasaur", picture: "https://raw.githubusercontent.com/PokeAPI/sprites/...", trainer_id: 1, created_at: "2022-01-14 13:20:56.746438000 +0000", updated_at: "2022-01-14 13:20:56.746438000 +0000", description: nil>]>):
+  
+app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:39:07 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 8.9ms | Allocations: 6578)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 10417)
+Completed 200 OK in 19ms (Views: 13.9ms | ActiveRecord: 3.3ms | Allocations: 11587)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:39:08 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.2ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 6480)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.9ms | Allocations: 10197)
+Completed 200 OK in 44ms (Views: 32.4ms | ActiveRecord: 3.6ms | Allocations: 11336)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:39:09 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.1ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6480)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 10197)
+Completed 200 OK in 30ms (Views: 25.0ms | ActiveRecord: 3.6ms | Allocations: 11336)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:39:10 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokeType Load (0.8ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.8ms | Allocations: 4976)
+
+
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `poke_types' for #<ActiveRecord::Relation [#<Pokemon id: 1, name: "bulbasaur", picture: "https://raw.githubusercontent.com/PokeAPI/sprites/...", trainer_id: 1, created_at: "2022-01-14 13:20:56.746438000 +0000", updated_at: "2022-01-14 13:20:56.746438000 +0000", description: nil>]>):
+  
+app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokeType Load (0.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" INNER JOIN "poke_types_pokemons" ON "poke_types"."id" = "poke_types_pokemons"."poke_type_id" WHERE "poke_types_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPokeType Create (0.4ms)[0m  [1m[32mINSERT INTO "poke_types" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2022-01-14 19:40:08.156228"], ["updated_at", "2022-01-14 19:40:08.156228"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPokemon::HABTM_PokeTypes Create (0.6ms)[0m  [1m[32mINSERT INTO "poke_types_pokemons" ("pokemon_id", "poke_type_id") VALUES ($1, $2)[0m  [["pokemon_id", 1], ["poke_type_id", 21]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPokeType Load (0.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" INNER JOIN "poke_types_pokemons" ON "poke_types"."id" = "poke_types_pokemons"."poke_type_id" WHERE "poke_types_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" ORDER BY "pokemons"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPokeType Load (0.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" INNER JOIN "poke_types_pokemons" ON "poke_types"."id" = "poke_types_pokemons"."poke_type_id" WHERE "poke_types_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:41:01 -0600
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.4ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 292.1ms | Allocations: 364142)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 504.3ms | Allocations: 398481)
+Completed 200 OK in 545ms (Views: 495.6ms | ActiveRecord: 21.4ms | Allocations: 412806)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:41:06 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.2ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 10.7ms | Allocations: 6674)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.2ms | Allocations: 10519)
+Completed 200 OK in 39ms (Views: 32.6ms | ActiveRecord: 3.9ms | Allocations: 11902)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:41:07 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokeType Load (0.9ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  ↳ app/controllers/poke_types_controller.rb:23:in `p'
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.6ms | Allocations: 6456)
+
+
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `poke_types' for #<ActiveRecord::Relation [#<Pokemon id: 1, name: "bulbasaur", picture: "https://raw.githubusercontent.com/PokeAPI/sprites/...", trainer_id: 1, created_at: "2022-01-14 13:20:56.746438000 +0000", updated_at: "2022-01-14 13:20:56.746438000 +0000", description: nil>]>):
+  
+app/controllers/poke_types_controller.rb:24:in `add_poke_type'
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:41:49 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.1ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 9.8ms | Allocations: 6661)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 10516)
+Completed 200 OK in 21ms (Views: 14.5ms | ActiveRecord: 3.8ms | Allocations: 11869)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:42:34 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokeType Load (0.5ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  ↳ app/controllers/poke_types_controller.rb:23:in `p'
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 7.0ms | Allocations: 21140)
+
+
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 /* loading for inspect */ LIMIT $2[0m  [["id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `poke_types' for #<ActiveRecord::Relation [#<Pokemon id: 1, name: "bulbasaur", picture: "https://raw.githubusercontent.com/PokeAPI/sprites/...", trainer_id: 1, created_at: "2022-01-14 13:20:56.746438000 +0000", updated_at: "2022-01-14 13:20:56.746438000 +0000", description: nil>]>):
+  
+app/controllers/poke_types_controller.rb:25:in `add_poke_type'
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:43:36 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.1ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.2ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 41.4ms | Allocations: 21709)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.7ms | Allocations: 25664)
+Completed 200 OK in 69ms (Views: 37.6ms | ActiveRecord: 17.3ms | Allocations: 35368)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:43:37 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE (1) LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:21:in `add_poke_type'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.1ms | Allocations: 2176)
+
+
+  
+ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "pokemons".* FROM "pokemons" WHERE (1) LIMIT $1
+                                                   ^
+):
+  
+app/controllers/poke_types_controller.rb:21:in `add_poke_type'
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:44:30 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (3.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.2ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 40.6ms | Allocations: 21711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 25679)
+Completed 200 OK in 67ms (Views: 35.1ms | ActiveRecord: 19.1ms | Allocations: 35437)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:44:32 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:21:in `add_poke_type'
+  [1m[36mPokeType Load (6.4ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/poke_types_controller.rb:25:in `add_poke_type'
+  [1m[36mPokemon::HABTM_PokeTypes Create (1.0ms)[0m  [1m[32mINSERT INTO "poke_types_pokemons" ("pokemon_id", "poke_type_id") VALUES ($1, $2)[0m  [["pokemon_id", 1], ["poke_type_id", 1]]
+  ↳ app/controllers/poke_types_controller.rb:25:in `add_poke_type'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/poke_types_controller.rb:25:in `add_poke_type'
+Completed 406 Not Acceptable in 57ms (ActiveRecord: 13.3ms | Allocations: 10868)
+
+
+  
+ActionController::MissingExactTemplate (PokeTypesController#add_poke_type is missing a template for request formats: text/html):
+  
+actionpack (6.1.4.4) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.1.4.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+<internal:kernel>:90:in `tap'
+actionpack (6.1.4.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.1.4.4) lib/abstract_controller/base.rb:228:in `process_action'
+actionpack (6.1.4.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.1.4.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.1.4.4) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+actiontext (6.1.4.4) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (6.1.4.4) lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+activesupport (6.1.4.4) lib/active_support/callbacks.rb:126:in `instance_exec'
+activesupport (6.1.4.4) lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+activesupport (6.1.4.4) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.4.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.4.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.4.4) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.4.4) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.4.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.4.4) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.4.4) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.4.4) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.4.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.4.4) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.4.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.4.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.4.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.4.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.4.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.4.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.4.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4.4) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.4.4) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.4) lib/action_dispatch/middleware/host_authorization.rb:119:in `call'
+rack-mini-profiler (2.3.3) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.2) lib/rack/proxy.rb:67:in `call'
+railties (6.1.4.4) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:45:07 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:21:in `add_poke_type'
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mPokemon::HABTM_PokeTypes Create (0.8ms)[0m  [1m[32mINSERT INTO "poke_types_pokemons" ("pokemon_id", "poke_type_id") VALUES ($1, $2)[0m  [["pokemon_id", 1], ["poke_type_id", 1]]
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+Redirected to http://localhost:3000/
+Completed 302 Found in 56ms (ActiveRecord: 25.2ms | Allocations: 22703)
+
+
+Started GET "/" for ::1 at 2022-01-14 13:45:08 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (1.3ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:16
+  Rendered trainers/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 4445)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 8511)
+Completed 200 OK in 23ms (Views: 15.8ms | ActiveRecord: 4.8ms | Allocations: 10655)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 13:45:10 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.5ms | Allocations: 342)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 88)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.1ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 3963)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 7784)
+Completed 200 OK in 23ms (Views: 17.7ms | ActiveRecord: 1.7ms | Allocations: 9316)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:45:13 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.5ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 31.5ms | Allocations: 15285)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 19218)
+Completed 200 OK in 45ms (Views: 26.3ms | ActiveRecord: 14.4ms | Allocations: 21092)
+
+
+Started GET "/add_type?name=normal&poke_id=1&commit=Add+new+type" for ::1 at 2022-01-14 13:45:15 -0600
+Processing by PokeTypesController#add_poke_type as HTML
+  Parameters: {"name"=>"normal", "poke_id"=>"1", "commit"=>"Add new type"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:21:in `add_poke_type'
+  [1m[36mPokeType Load (0.7ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" WHERE "poke_types"."name" = $1 LIMIT $2[0m  [["name", "normal"], ["LIMIT", 1]]
+  ↳ app/controllers/poke_types_controller.rb:22:in `add_poke_type'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mPokemon::HABTM_PokeTypes Create (10.4ms)[0m  [1m[32mINSERT INTO "poke_types_pokemons" ("pokemon_id", "poke_type_id") VALUES ($1, $2)[0m  [["pokemon_id", 1], ["poke_type_id", 1]]
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/poke_types_controller.rb:23:in `add_poke_type'
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 13.8ms | Allocations: 4654)
+
+
+Started GET "/" for ::1 at 2022-01-14 13:45:15 -0600
+Processing by TrainersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/index.html.erb within layouts/application
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/trainers/index.html.erb:16
+  Rendered trainers/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1067)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 4886)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.8ms | Allocations: 5322)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 13:45:17 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.5ms | Allocations: 102)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.8ms | Allocations: 106)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1888)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 5839)
+Completed 200 OK in 20ms (Views: 14.8ms | ActiveRecord: 2.4ms | Allocations: 6978)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:45:17 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (2.3ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 13.0ms | Allocations: 6974)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 10789)
+Completed 200 OK in 30ms (Views: 22.1ms | ActiveRecord: 5.1ms | Allocations: 11932)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 13:46:47 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.2ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (9.5ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.1ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types" INNER JOIN "poke_types_pokemons" ON "poke_types"."id" = "poke_types_pokemons"."poke_type_id" WHERE "poke_types_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:51
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:60
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 25.1ms | Allocations: 8954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | Allocations: 13060)
+Completed 200 OK in 38ms (Views: 21.7ms | ActiveRecord: 13.5ms | Allocations: 15093)
+
+
