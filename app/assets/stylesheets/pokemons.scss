@@ -5,7 +5,18 @@
 
 @include small-screen {
     .poke-card {
-        background-color: blue;
+        @include flex-center;
+
+        background-color: var(--l-green);
         border-radius: 20px 40px;
+        margin: 1em;
+
+        img {
+            width: 200px;
+            height: 200px;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
     }
 }

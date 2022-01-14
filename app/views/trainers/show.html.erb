@@ -10,11 +10,9 @@
   <%= @trainer.picture %>
 </p>
 
-<div>
-  <% @trainer.pokemons.each do |poke| %>
-    <%= render "shared/pokemon_card", poke: poke %>
-  <% end %>
-<div>
+<% @trainer.pokemons.each do |poke| %>
+  <%= render "shared/pokemon_card", poke: poke %>
+<% end %>
 
 <%= link_to 'Add new pokemon', new_pokemon_path %>
 <%= link_to 'Edit', edit_trainer_path(@trainer) %> |

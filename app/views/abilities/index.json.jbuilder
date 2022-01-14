@@ -1,1 +1,1 @@
-json.array! @abilities, partial: "abilities/ability", as: :ability
+json.array! @abilities, partial: 'abilities/ability', as: :ability

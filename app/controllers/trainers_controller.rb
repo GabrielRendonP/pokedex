@@ -1,5 +1,5 @@
 class TrainersController < ApplicationController
-  before_action :set_trainer, only: %i[ show edit update destroy ]
+  before_action :set_trainer, only: %i[show edit update destroy]
 
   # GET /trainers or /trainers.json
   def index
@@ -7,8 +7,7 @@ class TrainersController < ApplicationController
   end
 
   # GET /trainers/1 or /trainers/1.json
-  def show
-  end
+  def show; end
 
   # GET /trainers/new
   def new
@@ -16,8 +15,7 @@ class TrainersController < ApplicationController
   end
 
   # GET /trainers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /trainers or /trainers.json
   def create
@@ -25,7 +23,7 @@ class TrainersController < ApplicationController
 
     respond_to do |format|
       if @trainer.save
-        format.html { redirect_to trainer_url(@trainer), notice: "Trainer was successfully created." }
+        format.html { redirect_to trainer_url(@trainer), notice: 'Trainer was successfully created.' }
         format.json { render :show, status: :created, location: @trainer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class TrainersController < ApplicationController
   def update
     respond_to do |format|
       if @trainer.update(trainer_params)
-        format.html { redirect_to trainer_url(@trainer), notice: "Trainer was successfully updated." }
+        format.html { redirect_to trainer_url(@trainer), notice: 'Trainer was successfully updated.' }
         format.json { render :show, status: :ok, location: @trainer }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class TrainersController < ApplicationController
     @trainer.destroy
 
     respond_to do |format|
-      format.html { redirect_to trainers_url, notice: "Trainer was successfully destroyed." }
+      format.html { redirect_to trainers_url, notice: 'Trainer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trainer
-      @trainer = Trainer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def trainer_params
-      params.require(:trainer).permit(:name, :picture)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_trainer
+    @trainer = Trainer.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def trainer_params
+    params.require(:trainer).permit(:name, :picture)
+  end
 end

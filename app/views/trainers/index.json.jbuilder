@@ -1,1 +1,1 @@
-json.array! @trainers, partial: "trainers/trainer", as: :trainer
+json.array! @trainers, partial: 'trainers/trainer', as: :trainer
