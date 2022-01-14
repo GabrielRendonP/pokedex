@@ -12,7 +12,9 @@ module TaskHelpers
     results.map.with_index do |poke, idx|
       { name: poke['name'],
         picture: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{idx + 1}.png",
-        animation: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/#{idx + 1}.gif" }
+        animation:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/
+        #{idx + 1}.gif" }
     end
   end
 

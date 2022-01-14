@@ -18,8 +18,7 @@ class PokeTypesController < ApplicationController
   def edit; end
 
   def add_poke_type
-    pokemon = Pokemon.find_poke_by_id(params[:poke_id])
-    p params
+    @pokemon = Pokemon.find_poke_by_id(params[:poke_id])
   end
 
   # POST /poke_types or /poke_types.json
