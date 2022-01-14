@@ -1,7 +1,13 @@
-body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px; }
+@import './utilities.scss';
+
+@include small-screen {
+  body {
+    @include flex-center;
+
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -14,7 +20,7 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000; }
+  color: var(--m-background); }
 
 a:visited {
   color: #666; }

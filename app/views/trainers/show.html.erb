@@ -1,19 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @trainer.name %>
-</p>
+<div class="main-container">
+    <h2> Trainer </h2>
+    <p> <%= @trainer.name %> </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @trainer.picture %>
-</p>
+  <% @trainer.pokemons.each do |poke| %>
+    <%= render "shared/pokemon_card", poke: poke %>
+  <% end %>
 
-<% @trainer.pokemons.each do |poke| %>
-  <%= render "shared/pokemon_card", poke: poke %>
-<% end %>
-
-<%= link_to 'Add new pokemon', new_pokemon_path %>
-<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
-<%= link_to 'Back', trainers_path %>
+  <div class="links-container">
+    <%= link_to 'Add new pokemon', new_pokemon_path %>
+    <%= link_to 'Edit', edit_trainer_path(@trainer) %>
+    <%= link_to 'Back', trainers_path %>
+  </div>
+</div>

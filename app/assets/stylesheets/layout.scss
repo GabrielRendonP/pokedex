@@ -1,0 +1,39 @@
+@import './utilities.scss';
+
+@include small-screen {
+    .main-container {
+        @include flex-center;
+    
+        border-radius: 10px;
+        background-color: var(--l-blue);
+        width: 100%;
+    
+        h2 {
+            padding: 1rem;
+            font-size: 2rem;
+            color: var(--m-background)
+        }
+        p {
+            font-size: 2rem;
+            padding: 0.5rem;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            padding: 1rem;
+
+            a {
+                @include flex-center;
+
+                text-decoration: none;
+                background-color: var(--d-green);
+                border-radius: 8px;
+                padding: 0.5rem 0.5rem;
+                text-align: center;
+                color: var(--m-background);
+            }
+        }
+    }
+}

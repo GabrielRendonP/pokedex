@@ -25188,3 +25188,1164 @@ Processing by TrainersController#show as HTML
 Completed 200 OK in 44ms (Views: 36.9ms | ActiveRecord: 1.5ms | Allocations: 18323)
 
 
+Started GET "/pokemons/1" for ::1 at 2022-01-14 11:33:19 -0600
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.9ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.7ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.0ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 261.0ms | Allocations: 362782)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 382.7ms | Allocations: 386738)
+Completed 200 OK in 419ms (Views: 374.1ms | ActiveRecord: 18.3ms | Allocations: 399459)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:37:52 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.0ms | Allocations: 469)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 3828)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.4ms | Allocations: 21088)
+Completed 200 OK in 64ms (Views: 49.4ms | ActiveRecord: 5.1ms | Allocations: 27346)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:38:46 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1164)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 17224)
+Completed 200 OK in 45ms (Views: 40.8ms | ActiveRecord: 1.8ms | Allocations: 18547)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:39:23 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 17169)
+Completed 200 OK in 46ms (Views: 41.3ms | ActiveRecord: 2.0ms | Allocations: 18303)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:40:04 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 17176)
+Completed 200 OK in 41ms (Views: 37.1ms | ActiveRecord: 1.8ms | Allocations: 18310)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:40:22 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.9ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | Allocations: 17177)
+Completed 200 OK in 44ms (Views: 40.1ms | ActiveRecord: 1.9ms | Allocations: 18311)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:40:30 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1111)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 17180)
+Completed 200 OK in 44ms (Views: 39.8ms | ActiveRecord: 1.5ms | Allocations: 18332)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:40:45 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 17181)
+Completed 200 OK in 47ms (Views: 42.9ms | ActiveRecord: 1.6ms | Allocations: 18315)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:41:01 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.2ms | Allocations: 17174)
+Completed 200 OK in 51ms (Views: 46.8ms | ActiveRecord: 1.6ms | Allocations: 18308)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:41:50 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 17211)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 1.5ms | Allocations: 18345)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:41:59 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (1.0ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | Allocations: 17184)
+Completed 200 OK in 45ms (Views: 40.9ms | ActiveRecord: 2.2ms | Allocations: 18318)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:42:11 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:13
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 17183)
+Completed 200 OK in 44ms (Views: 40.2ms | ActiveRecord: 2.0ms | Allocations: 18317)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:48:10 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (1.1ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.6ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1920)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 17738)
+Completed 200 OK in 58ms (Views: 35.7ms | ActiveRecord: 12.3ms | Allocations: 24080)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:48:25 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 16798)
+Completed 200 OK in 42ms (Views: 37.3ms | ActiveRecord: 2.2ms | Allocations: 17999)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:48:34 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 17178)
+Completed 200 OK in 37ms (Views: 33.6ms | ActiveRecord: 1.7ms | Allocations: 18312)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:49:01 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 4914)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 1.5ms | Allocations: 6048)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:50:36 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 17558)
+Completed 200 OK in 42ms (Views: 38.5ms | ActiveRecord: 1.8ms | Allocations: 18692)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:51:28 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1111)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 15545)
+Completed 200 OK in 37ms (Views: 32.7ms | ActiveRecord: 1.9ms | Allocations: 16700)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:51:51 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 15534)
+Completed 200 OK in 36ms (Views: 33.0ms | ActiveRecord: 1.5ms | Allocations: 16668)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:53:39 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.9ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1905)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.8ms | Allocations: 18839)
+Completed 200 OK in 54ms (Views: 48.8ms | ActiveRecord: 1.8ms | Allocations: 20834)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:54:05 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.7ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1905)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 6056)
+Completed 200 OK in 19ms (Views: 14.3ms | ActiveRecord: 1.8ms | Allocations: 8118)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:54:38 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:9
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.8ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1884)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 6036)
+Completed 200 OK in 19ms (Views: 14.6ms | ActiveRecord: 2.1ms | Allocations: 8098)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:55:47 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.8ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1882)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 6033)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 1.7ms | Allocations: 8097)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:57:34 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.3ms | Allocations: 18054)
+Completed 200 OK in 50ms (Views: 45.9ms | ActiveRecord: 1.6ms | Allocations: 19255)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:58:20 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.6ms | Allocations: 17069)
+Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 1.5ms | Allocations: 18203)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:59:08 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 15540)
+Completed 200 OK in 31ms (Views: 27.1ms | ActiveRecord: 1.8ms | Allocations: 16674)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:59:49 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.7ms | Allocations: 17509)
+Completed 200 OK in 45ms (Views: 41.3ms | ActiveRecord: 1.5ms | Allocations: 18643)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 11:59:57 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 17890)
+Completed 200 OK in 42ms (Views: 38.4ms | ActiveRecord: 1.6ms | Allocations: 19024)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:00:17 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 18272)
+Completed 200 OK in 41ms (Views: 37.9ms | ActiveRecord: 1.4ms | Allocations: 19406)
+
+
+Started GET "/pokemons/1" for ::1 at 2022-01-14 12:01:17 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (1.7ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.4ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 14.6ms | Allocations: 8014)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 12044)
+Completed 200 OK in 40ms (Views: 31.3ms | ActiveRecord: 5.8ms | Allocations: 13806)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:04:16 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (1.2ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.8ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1887)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.8ms | Allocations: 19605)
+Completed 200 OK in 51ms (Views: 45.3ms | ActiveRecord: 2.0ms | Allocations: 21687)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:04:29 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.3ms | Allocations: 18261)
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 1.4ms | Allocations: 19462)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:04:43 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 18279)
+Completed 200 OK in 43ms (Views: 39.1ms | ActiveRecord: 1.7ms | Allocations: 19413)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:04:45 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4873)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 1.4ms | Allocations: 6007)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:04:52 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | Allocations: 18273)
+Completed 200 OK in 40ms (Views: 37.1ms | ActiveRecord: 1.4ms | Allocations: 19407)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:05:00 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.4ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 18276)
+Completed 200 OK in 42ms (Views: 38.8ms | ActiveRecord: 1.7ms | Allocations: 19410)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:06:08 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (2.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.6ms | Allocations: 17664)
+Completed 200 OK in 63ms (Views: 57.9ms | ActiveRecord: 2.9ms | Allocations: 18798)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:06:09 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.5ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 4873)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 1.5ms | Allocations: 6007)
+
+
+Started GET "/pokemons/new" for ::1 at 2022-01-14 12:06:30 -0600
+Processing by PokemonsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/new.html.erb within layouts/application
+  [1m[36mPokeDatum Load (1.7ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data"[0m
+  ↳ app/views/pokemons/_form.html.erb:16
+  [1m[36mTrainer Load (1.3ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/pokemons/_form.html.erb:21
+  Rendered pokemons/_form.html.erb (Duration: 96.6ms | Allocations: 16031)
+  Rendered pokemons/new.html.erb within layouts/application (Duration: 97.6ms | Allocations: 16440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 104.8ms | Allocations: 20310)
+Completed 200 OK in 110ms (Views: 95.9ms | ActiveRecord: 11.5ms | Allocations: 21368)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:06:49 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 114)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1172)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | Allocations: 17885)
+Completed 200 OK in 44ms (Views: 40.1ms | ActiveRecord: 1.7ms | Allocations: 19121)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:07:21 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.6ms | Allocations: 17678)
+Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 1.4ms | Allocations: 18812)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:07:27 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.0ms | Allocations: 17664)
+Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 1.6ms | Allocations: 18798)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:09:30 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 18350)
+Completed 200 OK in 44ms (Views: 40.2ms | ActiveRecord: 1.6ms | Allocations: 19484)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:10:04 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 18347)
+Completed 200 OK in 46ms (Views: 42.2ms | ActiveRecord: 1.4ms | Allocations: 19481)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:10:26 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 18335)
+Completed 200 OK in 44ms (Views: 40.8ms | ActiveRecord: 1.5ms | Allocations: 19469)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:10:46 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 18332)
+Completed 200 OK in 44ms (Views: 40.8ms | ActiveRecord: 1.5ms | Allocations: 19466)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:10:54 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 4917)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 1.5ms | Allocations: 6051)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:12:41 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.3ms | Allocations: 19859)
+Completed 200 OK in 56ms (Views: 52.2ms | ActiveRecord: 2.2ms | Allocations: 20993)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:12:44 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4873)
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 1.4ms | Allocations: 6007)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:13:28 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.5ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.8ms | Allocations: 18308)
+Completed 200 OK in 48ms (Views: 44.4ms | ActiveRecord: 1.5ms | Allocations: 19442)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:13:50 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.0ms | Allocations: 18270)
+Completed 200 OK in 43ms (Views: 39.6ms | ActiveRecord: 1.4ms | Allocations: 19404)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:14:37 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.6ms | Allocations: 18273)
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 1.6ms | Allocations: 19407)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:14:52 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 18280)
+Completed 200 OK in 43ms (Views: 38.9ms | ActiveRecord: 1.4ms | Allocations: 19414)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:15:04 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 18299)
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 1.4ms | Allocations: 19433)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:15:21 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 18315)
+Completed 200 OK in 44ms (Views: 40.6ms | ActiveRecord: 1.4ms | Allocations: 19449)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:16:28 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 18295)
+Completed 200 OK in 42ms (Views: 38.6ms | ActiveRecord: 1.6ms | Allocations: 19429)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:16:42 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 18280)
+Completed 200 OK in 43ms (Views: 40.3ms | ActiveRecord: 1.4ms | Allocations: 19414)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:16:43 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 4873)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 1.5ms | Allocations: 6007)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:16:52 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.1ms | Allocations: 18280)
+Completed 200 OK in 41ms (Views: 37.7ms | ActiveRecord: 1.4ms | Allocations: 19414)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:17:03 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 18274)
+Completed 200 OK in 44ms (Views: 40.3ms | ActiveRecord: 1.5ms | Allocations: 19408)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:17:27 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.0ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1891)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 6044)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 1.7ms | Allocations: 8073)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:17:42 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4873)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 1.5ms | Allocations: 6074)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:17:55 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 18430)
+Completed 200 OK in 40ms (Views: 37.1ms | ActiveRecord: 1.5ms | Allocations: 19564)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:18:18 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 18278)
+Completed 200 OK in 42ms (Views: 38.5ms | ActiveRecord: 1.4ms | Allocations: 19412)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:18:41 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 18278)
+Completed 200 OK in 43ms (Views: 38.5ms | ActiveRecord: 1.6ms | Allocations: 19412)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:19:21 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 18279)
+Completed 200 OK in 47ms (Views: 43.1ms | ActiveRecord: 1.4ms | Allocations: 19413)
+
+
+Started GET "/pokemons/new" for ::1 at 2022-01-14 12:19:48 -0600
+Processing by PokemonsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/new.html.erb within layouts/application
+  [1m[36mPokeDatum Load (1.3ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data"[0m
+  ↳ app/views/pokemons/_form.html.erb:16
+  [1m[36mTrainer Load (1.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers"[0m
+  ↳ app/views/pokemons/_form.html.erb:21
+  Rendered pokemons/_form.html.erb (Duration: 13.7ms | Allocations: 7750)
+  Rendered pokemons/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 8152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | Allocations: 12283)
+Completed 200 OK in 29ms (Views: 24.1ms | ActiveRecord: 2.9ms | Allocations: 13315)
+
+
+Started POST "/pokemons" for ::1 at 2022-01-14 12:19:54 -0600
+Processing by PokemonsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "pokemon"=>{"name"=>"charmeleon", "trainer_id"=>"1"}, "commit"=>"Create Pokemon"}
+  [1m[36mPokeDatum Load (0.8ms)[0m  [1m[34mSELECT "poke_data".* FROM "poke_data" WHERE "poke_data"."name" = $1 LIMIT $2[0m  [["name", "charmeleon"], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mTrainer Load (1.0ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mPokemon Create (2.2ms)[0m  [1m[32mINSERT INTO "pokemons" ("name", "picture", "trainer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "charmeleon"], ["picture", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"], ["trainer_id", 1], ["created_at", "2022-01-14 18:19:54.871886"], ["updated_at", "2022-01-14 18:19:54.871886"]]
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/pokemons_controller.rb:26:in `block in create'
+Redirected to http://localhost:3000/pokemons/2
+Completed 302 Found in 36ms (ActiveRecord: 7.0ms | Allocations: 6122)
+
+
+Started GET "/pokemons/2" for ::1 at 2022-01-14 12:19:54 -0600
+Processing by PokemonsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/pokemons_controller.rb:63:in `set_pokemon'
+  Rendering layout layouts/application.html.erb
+  Rendering pokemons/show.html.erb within layouts/application
+  [1m[36mAbility Load (1.0ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" INNER JOIN "abilities_pokemons" ON "abilities"."id" = "abilities_pokemons"."ability_id" WHERE "abilities_pokemons"."pokemon_id" = $1[0m  [["pokemon_id", 2]]
+  ↳ app/views/pokemons/show.html.erb:26
+  [1m[36mAbility Load (0.8ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  ↳ app/views/pokemons/show.html.erb:34
+  [1m[36mPokeType Load (1.1ms)[0m  [1m[34mSELECT "poke_types".* FROM "poke_types"[0m
+  ↳ app/views/pokemons/show.html.erb:54
+  Rendered pokemons/show.html.erb within layouts/application (Duration: 8.8ms | Allocations: 6980)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.8ms | Allocations: 10642)
+Completed 200 OK in 40ms (Views: 34.5ms | ActiveRecord: 3.6ms | Allocations: 11923)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:20:10 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.5ms | Allocations: 107)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.1ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1286)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5063)
+Completed 200 OK in 19ms (Views: 15.3ms | ActiveRecord: 1.4ms | Allocations: 6199)
+
+
+Started GET "/trainers/1/edit" for ::1 at 2022-01-14 12:20:19 -0600
+Processing by TrainersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/edit.html.erb within layouts/application
+  Rendered trainers/_form.html.erb (Duration: 1.9ms | Allocations: 967)
+  Rendered trainers/edit.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1355)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 5688)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.7ms | Allocations: 6947)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 12:20:43 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:62:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:7
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.1ms | Allocations: 88)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1276)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 18637)
+Completed 200 OK in 44ms (Views: 40.9ms | ActiveRecord: 1.4ms | Allocations: 19771)
+
+
