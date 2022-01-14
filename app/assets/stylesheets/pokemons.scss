@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import './utilities.scss';
 
-.poke_card {
-    @include small-screen {
-
+@include small-screen {
+    .poke-card {
+        background-color: blue;
+        border-radius: 20px 40px;
     }
 }

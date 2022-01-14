@@ -24883,3 +24883,67 @@ Processing by TrainersController#show as HTML
 Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 2.0ms | Allocations: 8004)
 
 
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:25:19 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.7ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 1.1ms | Allocations: 324)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1903)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 18529)
+Completed 200 OK in 49ms (Views: 44.1ms | ActiveRecord: 1.7ms | Allocations: 20591)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:27:04 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.8ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1111)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.3ms | Allocations: 17122)
+Completed 200 OK in 44ms (Views: 40.0ms | ActiveRecord: 1.6ms | Allocations: 18323)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:28:17 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 17142)
+Completed 200 OK in 42ms (Views: 38.1ms | ActiveRecord: 1.5ms | Allocations: 18276)
+
+
+Started GET "/trainers/1" for ::1 at 2022-01-14 07:28:48 -0600
+Processing by TrainersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrainer Load (0.6ms)[0m  [1m[34mSELECT "trainers".* FROM "trainers" WHERE "trainers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trainers_controller.rb:63:in `set_trainer'
+  Rendering layout layouts/application.html.erb
+  Rendering trainers/show.html.erb within layouts/application
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."trainer_id" = $1[0m  [["trainer_id", 1]]
+  ↳ app/views/trainers/show.html.erb:14
+  Rendered shared/_pokemon_card.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered trainers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 17135)
+Completed 200 OK in 42ms (Views: 38.6ms | ActiveRecord: 1.4ms | Allocations: 18269)
+
+
