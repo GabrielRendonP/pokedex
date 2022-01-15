@@ -11,10 +11,9 @@ module TaskHelpers
     results = fetch_data('pokemon?limit=151')['results']
     results.map.with_index do |poke, idx|
       { name: poke['name'],
-        picture: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{idx + 1}.png",
-        animation:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/
-        #{idx + 1}.gif" }
+        sprites: ["https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{idx + 1}.png",
+                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/#{
+                    idx + 1}.gif"] }
     end
   end
 
@@ -41,12 +40,17 @@ module TaskHelpers
   end
 
   def self.extract_data(data)
-    result = []
-    data.each do |hash|
-      hash.select do |point|
-        result << hash[point].strip if point == 'name'
+    # result = []
+    # data.each do |hash|
+    #  hash.select do |point|
+    #    result << hash[point].strip if point == 'name'
+    #  end
+    # end
+    # result
+    data.each_with_object([]) do |hash, obj|
+      hash.each do |point|
+        obj << hash[point] if point == 'name'
       end
     end
-    result
   end
 end

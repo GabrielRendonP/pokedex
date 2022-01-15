@@ -7,7 +7,9 @@ class TrainersController < ApplicationController
   end
 
   # GET /trainers/1 or /trainers/1.json
-  def show; end
+  def show
+    @view_context = view_context
+  end
 
   # GET /trainers/new
   def new

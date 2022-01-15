@@ -1,32 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pokemon.name %>
-</p>
-
-<div>
-  <%= image_tag @pokemon.picture %>
-</div>
-
-<p>
-  <strong>Trainer:</strong>
-  <%= @pokemon.trainer_id %>
-</p>
-
-<%= link_to 'Edit', edit_pokemon_path(@pokemon) %> |
-<%= link_to 'Back', pokemons_path %>
-
-
-<div>
-  <h2> Abilities </h2>
-</div>
-
-<div>
-  <% @pokemon.abilities.each do |ability| %>
-    <%= ability.name %>
-  <% end %>
-</div>
+<%= render 'shared/pokemon_card', poke: @pokemon, show_all: true %>
 
 <%= form_with url: add_ability_path, method: :get do |form| %>
   <div class="field">
@@ -34,24 +8,12 @@
     <%= form.collection_select :name, Ability.all, :name, :name, propmt: true %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :poke_id, value: @pokemon.id %>
-  </div>
+  <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
   <div class="actions">
     <%= form.submit 'Add new ability' %>
   </div>
 <% end %>
-
-<div>
-  <h2> Type </h2>
-</div>
-
-<div>
-  <% @pokemon.poke_types.each do |p_types| %>
-    <%= p_types.name %>
-  <% end %>
-</div>
 
 <%= form_with url: add_type_path, method: :get do |form| %>
 
@@ -60,11 +22,14 @@
     <%= form.collection_select :name, PokeType.all, :name, :name, propmt: true %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :poke_id, value: @pokemon.id %>
-  </div>
+  <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
   <div class="actions">
     <%= form.submit 'Add new type' %>
   </div>
 <% end %>
+
+<div class="links-container">
+  <%= link_to 'Edit', edit_pokemon_path(@pokemon) %>
+  <%= link_to 'Back', pokemons_path %>
+</div>

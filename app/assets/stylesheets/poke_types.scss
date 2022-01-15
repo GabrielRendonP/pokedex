@@ -1,3 +1,57 @@
 // Place all the styles related to the PokeTypes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin badge-style {
+  border-radius: 18px;
+  padding: 0.5rem;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.types-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5em;
+
+  .badge-normal,
+  .badge-fighting,
+  .badge-ground,
+  .badge-rock,
+  .badge-unknown {
+    @include badge-style;
+    background-color: var(--d-red);
+    color: var(--m-background);
+  }
+
+  .badge-fire,
+  .badge-dragon,
+  .badge-electric,
+  .badge-psychic,
+  .badge-flying {
+    @include badge-style;
+    background-color: var(--l-yellow);
+    color: var(--d-blue);
+  }
+
+  .badge-poision,
+  .badge-bug,
+  .badge-grass,
+  .badge-fairy {
+    @include badge-style;
+    background-color: var(--d-green);
+    color: var(--l-yellow);
+  }
+
+  .badge-ghost,
+  .badge-steel,
+  .badge-water,
+  .badge-ice,
+  .badge-shadow,
+  .badge-dark {
+    @include badge-style;
+    background-color: var(--d-blue);
+    color: var(--m-background);
+  }
+}

@@ -5,7 +5,7 @@
     <p> <%= @trainer.name %> </p>
 
   <% @trainer.pokemons.each do |poke| %>
-    <%= render "shared/pokemon_card", poke: poke %>
+    <%= render "shared/pokemon_card", poke: poke, show_all: false %>
   <% end %>
 
   <div class="links-container">

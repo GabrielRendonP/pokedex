@@ -8,6 +8,23 @@
     margin: 0.5rem;
     height: 100%;
   }
+
+  .flex-container {
+    @include flex-center;
+    padding: 1em;
+    gap: 1em;
+    width: 100%;
+
+    &.green {
+      background-color: var(--l-green);
+      border-radius: 10px 10px 50px 50px;
+    } 
+
+    &.blue {
+      background-color: var(--l-blue);
+      border-radius: 50px 50px 10px 10px;
+    }
+  }
 }
 
 body, p, ol, ul, td {
