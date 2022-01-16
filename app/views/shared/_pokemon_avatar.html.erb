@@ -6,12 +6,12 @@
   </div>
   <div class="avatar-info">
     <h2> <%= poke.name %> </h2>
-    <div>
-      <p> Trainer: <%= poke.trainer.name %> </p>
-    </div>
+      <%= link_to poke.trainer do %>
+        <p> Trainer: <%= poke.trainer.name %> </p>
+      <% end %>
   </div>
-    <div class="avatar-info">
-     <%= link_to 'Edit', edit_pokemon_path(poke) %>
-     <%= link_to 'Destroy', poke, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+  <div class="avatar-info">
+    <%= link_to 'Edit', edit_pokemon_path(poke) %>
+    <%= link_to 'Destroy', poke, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>
