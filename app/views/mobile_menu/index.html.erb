@@ -1,0 +1,10 @@
+<turbo-frame id="modal">
+  <section class="modal-section" data-action="click->menu#close" data-controller="menu">
+    <div class="modal" data-action="keyup@document->menu#escClose">
+      <div class="modal-window">
+        <%= link_to 'Pokemons', pokemons_path %>
+        <%= link_to 'Trainers', trainers_path %>
+      </div>
+    </div>
+  </section>
+</turbo-frame>
