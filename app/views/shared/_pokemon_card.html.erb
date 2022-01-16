@@ -9,7 +9,7 @@
   <% if show_all %>
     <div class="flex-container">
       <h2> Types: </h2>
-      <div class="types-container">
+      <div class="badges-container">
         <% poke.poke_types.each do |p_types| %>
           <%= type_badge @view_context, p_types.name %>
         <% end %>
@@ -17,7 +17,7 @@
     </div>
     <div class="flex-container">
       <h2> Abilities: </h2>
-      <div class="abilities-container">
+      <div class="badges-container">
         <% poke.abilities.each do |p_ability| %>
           <%= random_badge @view_context, p_ability.name %>
         <% end %>

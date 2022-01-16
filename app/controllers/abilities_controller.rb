@@ -21,7 +21,7 @@ class AbilitiesController < ApplicationController
     pokemon = Pokemon.find_by(id: params[:poke_id])
     ability = Ability.find_by(name: params[:name])
     pokemon.abilities << ability
-    redirect_to root_path
+    redirect_to pokemon
   end
 
   # POST /abilities or /abilities.json

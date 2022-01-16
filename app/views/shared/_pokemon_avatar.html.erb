@@ -1,0 +1,17 @@
+<div class="avatar-pokemon">
+  <div class="avatar-img">
+    <%= link_to poke do %>
+      <%= image_tag picture poke %>
+    <% end %>
+  </div>
+  <div class="avatar-info">
+    <h2> <%= poke.name %> </h2>
+    <div>
+      <p> Trainer: <%= poke.trainer.name %> </p>
+    </div>
+  </div>
+    <div class="avatar-info">
+     <%= link_to 'Edit', edit_pokemon_path(poke) %>
+     <%= link_to 'Destroy', poke, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+</div>
