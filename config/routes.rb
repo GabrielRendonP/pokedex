@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   root 'trainers#index'
 
   get '/menu', to: 'mobile_menu#index'
+  post '/poke_search', to: 'pokemons/search#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

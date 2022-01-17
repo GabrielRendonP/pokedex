@@ -1,8 +1,22 @@
 <p id="notice"><%= notice %></p>
 <section class="index-pokemons">
   <h1>Pokemons</h1>
-    <% @pokemons.each do |pokemon| %>
-      <%= render 'shared/pokemon_avatar', poke: pokemon %>
+    <div class= "search-bar">
+    <%= form_with url: poke_search_path do |form| %>
+      <%= form.text_field 'search_this', placeholder: 'Search pokemon' %>
+      <%= form.submit 'Search', data: { disable_with: false } %>
     <% end %>
+    <div class="order-btn-container">
+      <%= button_to 'Recent', poke_search_path(show_all: true, sort: :desc) %>
+      <%= button_to 'Oldest', poke_search_path(show_all: true, sort: :asc) %>
+    </div>
+  </div>
+
+   <%= render 'pokemons/search/listing' %>
+
+    <%# <% @pokemons.each do |pokemon| %>
+      <%# <%= render 'shared/pokemon_avatar', poke: pokemon %> %>
+    <%# <% end %> %> %>
+
   <%= link_to 'New Pokemon', new_pokemon_path, class: "my-link" %>
 </section>
