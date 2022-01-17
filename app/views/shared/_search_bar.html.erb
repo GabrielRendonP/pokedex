@@ -1,0 +1,10 @@
+<div class= "search-bar">
+  <%= form_with url: poke_search_path do |form| %>
+    <%= form.text_field 'search_this', placeholder: 'Search by name' %>
+    <%= form.submit 'Search', data: { disable_with: false } %>
+  <% end %>
+  <div class="order-btn-container">
+    <%= button_to 'Recent', poke_search_path(show_all: true, sort: :desc) %>
+    <%= button_to 'Oldest', poke_search_path(show_all: true, sort: :asc) %>
+  </div>
+</div>

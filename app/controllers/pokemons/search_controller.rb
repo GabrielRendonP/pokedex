@@ -1,12 +1,10 @@
 class Pokemons::SearchController < ApplicationController
   def index
-    @canyouseethis = 'helo helo'
-    @pokemons = Pokemon.all
-    # @results = if params['show_all']
-    #             Pokemon.includes(:name).where(user_id: current_user.id).sortify params['sort']
-    #           else
-    #             Pokemon.includes(:name).where(user_id: current_user.id).search(params[:search_this])
-    #           end
+    @pokemons = if params[:show_all]
+                  Pokemon.sortify params[:sort]
+                else
+                  Pokemon.search(params[:search_this])
+                end
 
     respond_to do |format|
       format.turbo_stream do
