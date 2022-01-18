@@ -1,0 +1,12 @@
+<div class="avatar-trainer">
+  <div class="avatar-info">
+    <h2> <%= trainer.name %> </h2>
+      <%= link_to trainer do %>
+        <p> Total pokemons: <%= trainer.pokemons.count %> </p>
+      <% end %>
+  </div>
+    <div class="avatar-info">
+     <%= link_to 'Edit', edit_trainer_path(trainer) %>
+     <%= link_to 'Destroy', trainer, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+</div>

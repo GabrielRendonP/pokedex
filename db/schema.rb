@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_134436) do
+ActiveRecord::Schema.define(version: 2022_01_15_151429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,12 @@ ActiveRecord::Schema.define(version: 2022_01_13_134436) do
   create_table "abilities_pokemons", id: false, force: :cascade do |t|
     t.bigint "pokemon_id", null: false
     t.bigint "ability_id", null: false
-    t.index ["ability_id", "pokemon_id"], name: "index_abilities_pokemons_on_ability_id_and_pokemon_id"
     t.index ["pokemon_id", "ability_id"], name: "index_abilities_pokemons_on_pokemon_id_and_ability_id"
   end
 
   create_table "poke_data", force: :cascade do |t|
     t.string "name"
-    t.string "picture"
+    t.string "sprites", array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "animation"
@@ -49,9 +48,15 @@ ActiveRecord::Schema.define(version: 2022_01_13_134436) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "poke_types_pokemons", id: false, force: :cascade do |t|
+    t.bigint "pokemon_id", null: false
+    t.bigint "poke_type_id", null: false
+    t.index ["pokemon_id", "poke_type_id"], name: "index_poke_types_pokemons_on_pokemon_id_and_poke_type_id"
+  end
+
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
-    t.string "picture"
+    t.string "sprites", array: true
     t.bigint "trainer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
