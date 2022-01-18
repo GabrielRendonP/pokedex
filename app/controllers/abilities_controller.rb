@@ -14,6 +14,12 @@ class AbilitiesController < ApplicationController
     @ability = Ability.new
   end
 
+  def delete_ability_asoc
+    pokemon = Pokemon.find_by_id(params[:poke_id])
+    pokemon.abilities.delete(Ability.find(params[:id]))
+    redirect_to pokemon, notice: 'Ability removed!'
+  end
+
   # GET /abilities/1/edit
   def edit; end
 
@@ -21,7 +27,7 @@ class AbilitiesController < ApplicationController
     pokemon = Pokemon.find_by(id: params[:poke_id])
     ability = Ability.find_by(name: params[:name])
     pokemon.abilities << ability
-    redirect_to pokemon
+    redirect_to pokemon, notice: 'Ability added!'
   end
 
   # POST /abilities or /abilities.json
@@ -71,6 +77,6 @@ class AbilitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def ability_params
-    params.require(:ability).permit(:name, :description)
+    params.require(:ability).permit(:name, :description, :poke_id)
   end
 end

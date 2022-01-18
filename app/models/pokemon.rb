@@ -13,4 +13,6 @@ class Pokemon < ApplicationRecord
                                prefix: true
                              }
                            }
+
+  validates :name, presence: true
 end

@@ -25,9 +25,12 @@
     overflow-x: hidden;
     animation: dropdown 0.3s ease-in;
     transform-origin: top;
+    position: absolute;
+    top: 50px;
 
     .modal-window {
       display: flex;
+      height: 100%;
       flex-direction: column;
       justify-content: center;
       gap: 1rem;

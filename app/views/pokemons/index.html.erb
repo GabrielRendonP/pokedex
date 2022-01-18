@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
 <section class="index-pokemons">
 
 <%= render 'shared/search_bar' %>

@@ -10,16 +10,23 @@
     <div class="flex-container">
       <h2> Types: </h2>
       <div class="badges-container">
-        <% poke.poke_types.each do |p_types| %>
-          <%= type_badge @view_context, p_types.name %>
+        <% poke.poke_types.each do |p_type| %>
+          <div class='badge-display'>
+            <%= button_to 'X', delete_type_path(id: p_type.id ,poke_id: poke.id), method: :delete %>
+            <%= type_badge @view_context, p_type.name %>
+          </div>
         <% end %>
       </div>
     </div>
+
     <div class="flex-container">
       <h2> Abilities: </h2>
       <div class="badges-container">
         <% poke.abilities.each do |p_ability| %>
-          <%= random_badge @view_context, p_ability.name %>
+          <div class='badge-display'>
+            <%= button_to 'X', delete_ability_path(id: p_ability.id ,poke_id: poke.id), method: :delete %>
+            <%= random_badge @view_context, p_ability.name %>
+          </div>
         <% end %>
       </div>
     </div>

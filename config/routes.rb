@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'mobile_menu/index'
-  resources :poke_data
+  root 'trainers#index'
+
   resources :poke_types
   resources :abilities
   resources :pokemons
@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get 'add_ability', to: 'abilities#link_ability'
   get 'add_type', to: 'poke_types#add_poke_type'
-  root 'trainers#index'
+  delete 'delete_ability', to: 'abilities#delete_ability_asoc'
+  delete 'delete_type', to: 'poke_types#delete_type_asoc'
 
   get '/menu', to: 'mobile_menu#index'
   post '/poke_search', to: 'pokemons/search#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -7,13 +7,14 @@
     .poke-card {
         @include flex-center;
 
-        background-color: var(--l-green);
+        background-image: linear-gradient(var(--l-green), var(--d-green));
         border-radius: 20px 40px;
         width: 90%;
         padding: 1em;
 
         .poke-name {
             font-size: 1rem;
+            font-weight: bold;
             padding: 1em;
             margin-top: 1rem;
             background-color: var(--d-blue);
@@ -57,7 +58,7 @@
             flex-direction: row;
             justify-content: space-between;
             gap: 1em;
-            background-color: var(--dd-blue);
+            background-image: linear-gradient(45deg, var(--dd-blue), var(--d-blue));
             width: 100%;
             border-radius: 28px;
             padding: 2em 0.5em;
