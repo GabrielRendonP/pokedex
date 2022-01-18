@@ -38,10 +38,6 @@ module TaskHelpers
   end
 
   def self.extract_data(data)
-    data.each_with_object([]) do |hash, obj|
-      hash.each do |point|
-        obj << hash[point] if point == 'name'
-      end
-    end
+    data.map { |hash| hash[:name] }
   end
 end
