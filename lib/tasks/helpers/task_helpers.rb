@@ -1,6 +1,4 @@
 module TaskHelpers
-  # animated_sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/#{id}.gif"
-  # sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{id}.png"
   def self.fetch_data(url)
     base = 'https://pokeapi.co/api/v2'
     response = RestClient.get("#{base}/#{url}")
@@ -11,8 +9,9 @@ module TaskHelpers
     results = fetch_data('pokemon?limit=151')['results']
     results.map.with_index do |poke, idx|
       { name: poke['name'],
-        picture: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{idx + 1}.png",
-        animation: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/#{idx + 1}.gif" }
+        sprites: ["https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{idx + 1}.png",
+                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/#{
+                    idx + 1}.gif"] }
     end
   end
 
@@ -39,12 +38,6 @@ module TaskHelpers
   end
 
   def self.extract_data(data)
-    result = []
-    data.each do |hash|
-      hash.select do |point|
-        result << hash[point].strip if point == 'name'
-      end
-    end
-    result
+    data.map { |hash| hash[:name] }
   end
 end

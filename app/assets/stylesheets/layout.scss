@@ -1,0 +1,28 @@
+@import './utilities.scss';
+
+@include small-screen {
+    .main-container {
+        @include flex-center;
+
+        border-radius: 10px;
+        background-color: var(--l-blue);
+        width: 100%;
+        gap: 1em;
+        
+        h1 {
+            padding: 1em;
+            font-size: 2rem;
+            color: var(--m-background);
+        }
+
+        h2 {
+            padding: 1rem;
+            font-size: 2rem;
+            color: var(--m-background)
+        }
+        p {
+            font-size: 2rem;
+            padding: 0.5rem;
+        }
+    }
+}

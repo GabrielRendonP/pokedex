@@ -1,7 +1,31 @@
-body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px; }
+@import './utilities.scss';
+
+@include small-screen {
+  body {
+    @include flex-center;
+
+    flex-direction: column;
+    margin: 0.5rem;
+    height: 100%;
+  }
+
+  .flex-container {
+    @include flex-center;
+    padding: 1em;
+    gap: 1em;
+    width: 100%;
+
+    &.green {
+      background-color: var(--l-green);
+      border-radius: 10px 10px 50px 50px;
+    } 
+
+    &.blue {
+      background-color: var(--l-blue);
+      border-radius: 50px 50px 10px 10px;
+    }
+  }
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -14,7 +38,7 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000; }
+  color: var(--m-background); }
 
 a:visited {
   color: #666; }
@@ -28,10 +52,6 @@ th {
 
 td {
   padding: 0 5px 7px; }
-
-div.field,
-div.actions {
-  margin-bottom: 10px; }
 
 #notice {
   color: green; }

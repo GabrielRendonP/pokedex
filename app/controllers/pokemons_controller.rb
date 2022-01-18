@@ -7,7 +7,9 @@ class PokemonsController < ApplicationController
   end
 
   # GET /pokemons/1 or /pokemons/1.json
-  def show; end
+  def show
+    @view_context = view_context
+  end
 
   # GET /pokemons/new
   def new
@@ -20,7 +22,7 @@ class PokemonsController < ApplicationController
   # POST /pokemons or /pokemons.json
   def create
     @pokemon = Pokemon.new(pokemon_params)
-    @pokemon.picture = PokeDatum.find_by(name: pokemon_params['name']).picture
+    @pokemon.sprites = PokeDatum.find_by(name: pokemon_params['name']).sprites
 
     respond_to do |format|
       if @pokemon.save

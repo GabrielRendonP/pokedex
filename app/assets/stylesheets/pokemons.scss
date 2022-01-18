@@ -9,7 +9,18 @@
 
         background-color: var(--l-green);
         border-radius: 20px 40px;
-        margin: 1em;
+        width: 90%;
+        padding: 1em;
+
+        .poke-name {
+            font-size: 1rem;
+            padding: 1em;
+            margin-top: 1rem;
+            background-color: var(--d-blue);
+            color: var(--m-background);
+            border-radius: 25px;
+            box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.507);
+        }
 
         img {
             width: 200px;
@@ -17,6 +28,59 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+        }
+    }
+
+    .index-pokemons {
+        h1 {
+            font-size: 2rem;
+            color: var(--d-blue);
+            padding: 1em
+        }
+
+        @include flex-center;
+
+        width: 100%;
+        gap: 1em;
+        padding: 1em;
+
+        .avatar-pokemon {
+            @include flex-center;
+            
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 1em;
+            background-color: var(--dd-blue);
+            width: 100%;
+            border-radius: 28px;
+            padding: 2em 0.5em;
+            box-shadow: 5px 5px 5px grey;
+
+            .avatar-img {
+                background-color: var(--l-red);
+                border-radius: 20px 80px;
+            }
+            .avatar-info {
+                @include flex-center;
+
+                color: var(--m-background);
+                gap: 1rem;
+                width: 100vw;
+
+                h2 {
+                    font-size: 100%;
+                }
+
+                a {
+                    text-decoration: none;
+                    background-color: var(--l-green);
+                    border-radius: 8px;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0.2rem;
+                    color: var(--dd-blue);
+                }
+            }
         }
     }
 }

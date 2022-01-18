@@ -1,6 +1,8 @@
-<h1>Editing Pokemon</h1>
+
+<br> <h1>Editing Pokemon</h1> <br>
 
 <%= render 'form', pokemon: @pokemon %>
-
-<%= link_to 'Show', @pokemon %> |
-<%= link_to 'Back', pokemons_path %>
+<div class='links-container'>
+  <%= link_to 'Show', @pokemon %>
+  <%= link_to 'Back', pokemons_path %>
+</div>

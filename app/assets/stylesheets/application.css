@@ -20,10 +20,24 @@
      --l-font:#a5a589;
      --d-green:#506b38;
      --l-green:#97aa4f;
+     --dd-blue: #2c1d34;
      --d-blue:#2c3c6a;
      --l-blue:#6293af;
+     --l-red: #9c323c;
+     --d-red: #512732;
+     --l-yellow: #cfb462;
  }
 
  html {
      background-color: #e9e5d1;
+ }
+
+ body {
+    background-color: #e9e5d1;
+ }
+
+ * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
  }
