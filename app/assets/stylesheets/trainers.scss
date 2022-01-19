@@ -4,20 +4,23 @@
 
 @import './utilities.scss';
 
-@include small-screen {
-  .index-trainers {
-    h1 {
-      font-size: 2rem;
-      color: var(--d-blue);
-      padding: 1em
-    }
+.index-trainers {
+  @include flex-center;
+
+  h1 {
+    font-size: 2rem;
+    color: var(--d-blue);
+    padding: 1em
+  }
+
+  .list {
 
     @include flex-center;
 
     width: 100%;
     gap: 1em;
     padding: 1em;
-
+  
     .avatar-trainer {
       @include flex-center;
       
@@ -29,22 +32,21 @@
       border-radius: 28px;
       padding: 2em 0.5em;
       box-shadow: 5px 5px 5px grey;
-
+  
       .avatar-img {
         background-color: var(--l-red);
         border-radius: 20px 80px;
       }
       .avatar-info {
         @include flex-center;
-
+  
         color: var(--m-background);
         gap: 1rem;
-        width: 100vw;
-
+  
         h2 {
           font-size: 150%;
         }
-
+  
         a {
           text-decoration: none;
           background-color: var(--l-green);
@@ -53,6 +55,43 @@
           text-align: center;
           padding: 0.2rem;
           color: var(--dd-blue);
+        }
+      }
+    }
+  }
+}
+
+@include desktop-screen {
+  .index-trainers {
+    h1 {
+      font-size: 4rem;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .avatar-trainer {
+        @include flex-center;
+      
+        .avatar-info {
+          width: 100%;
+          padding: 1em;
+
+          h2 {
+            font-size: 350%;
+            margin: 2rem;
+          }
+  
+          a {
+            font-size: 2rem;
+            text-decoration: none;
+            padding: 2rem;
+  
+            p {
+              font-size: 2rem;
+            }
+          }
         }
       }
     }

@@ -3,12 +3,8 @@
 <% end %>
 
 <section class="index-pokemons">
-
-<%= render 'shared/search_bar' %>
-
-  <h1>Pokemons</h1>
-
-   <%= render 'pokemons/search/listing' %>
-
+  <%= render 'shared/search_bar' %>
+    <h1>Pokemons</h1>
+    <%= render 'pokemons/search/listing' %>
   <%= link_to 'New Pokemon', new_pokemon_path, class: "my-link" %>
 </section>

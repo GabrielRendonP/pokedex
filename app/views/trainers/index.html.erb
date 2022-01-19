@@ -5,8 +5,11 @@
 
 <section class="index-trainers">
   <h1>Trainers</h1>
+  <div class="list">
     <% @trainers.each do |trainer| %>
       <%= render 'shared/trainer_avatar', trainer: trainer %>
     <% end %>
+  </div>
   <%= link_to 'New Trainer', new_trainer_path, class: 'my-link' %>
 </section>
+
