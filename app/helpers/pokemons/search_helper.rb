@@ -1,0 +1,2 @@
+module Pokemons::SearchHelper
+end

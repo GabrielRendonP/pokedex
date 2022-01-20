@@ -1,8 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
 <section class="index-pokemons">
+
+<%= render 'shared/search_bar' %>
+
   <h1>Pokemons</h1>
-    <% @pokemons.each do |pokemon| %>
-      <%= render 'shared/pokemon_avatar', poke: pokemon %>
-    <% end %>
+
+   <%= render 'pokemons/search/listing' %>
+
   <%= link_to 'New Pokemon', new_pokemon_path, class: "my-link" %>
 </section>

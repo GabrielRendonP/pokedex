@@ -120,63 +120,79 @@
   justify-content: center;
   gap: 0.5em;
 
-  .badge {
-    font-weight: bold;
-    &-normal,
-    &-fighting,
-    &-ground,
-    &-rock,
-    &-unknown{
-      @include badge-style;
-      background-color: var(--d-red);
-      color: var(--m-background);
+  .badge-display {
+    .button_to {
+      position: relative;
+      top: 16px;
+      right: -32px;
+
+      input[type="submit"] {
+        background-color: var(--l-red);
+        border: none;
+        border-radius: 100%;
+        padding: 0.2em;
+        color: var(--m-background);
+        font-weight: bold;
+      }
     }
-    &-fire,
-    &-dragon,
-    &-electric,
-    &-psychic,
-    &-flying{
-      @include badge-style;
-      background-color: var(--l-yellow);
-      color: var(--d-blue);
-    }
-    &-poision,
-    &-bug,
-    &-grass,
-    &-fairy{
-      @include badge-style;
-      background-color: var(--d-green);
-      color: var(--l-yellow);
-    }
-    &-ghost,
-    &-steel,
-    &-water,
-    &-ice,
-    &-shadow,
-    &-dark {
-      @include badge-style;
-      background-color: var(--d-blue);
-      color: var(--m-background);
-    }
-    &-blue {
-      @include badge-style;
-      background-color: var(--d-blue);
-      color: var(--m-background);
-    }
-    &-red {
-      @include badge-style;
-      background-color: var(--d-red);
-      color: var(--m-background);
-    }
-    &-yellow {
-      @include badge-style;
-      background-color: var(--m-background);
-      color: var(--d-blue);
-    }
-    &-green {
-      @include badge-style;
-      background-color: var(--d-green);
-      color: var(--m-background);
+    .badge {
+      font-weight: bold;
+      &-normal,
+      &-fighting,
+      &-ground,
+      &-rock,
+      &-unknown{
+        @include badge-style;
+        background-color: var(--d-red);
+        color: var(--m-background);
+      }
+      &-fire,
+      &-dragon,
+      &-electric,
+      &-psychic,
+      &-flying{
+        @include badge-style;
+        background-color: var(--l-yellow);
+        color: var(--d-blue);
+      }
+      &-poision,
+      &-bug,
+      &-grass,
+      &-fairy{
+        @include badge-style;
+        background-color: var(--d-green);
+        color: var(--l-yellow);
+      }
+      &-ghost,
+      &-steel,
+      &-water,
+      &-ice,
+      &-shadow,
+      &-dark {
+        @include badge-style;
+        background-color: var(--d-blue);
+        color: var(--m-background);
+      }
+      &-blue {
+        @include badge-style;
+        background-color: var(--d-blue);
+        color: var(--m-background);
+      }
+      &-red {
+        @include badge-style;
+        background-color: var(--d-red);
+        color: var(--m-background);
+      }
+      &-yellow {
+        @include badge-style;
+        background-color: var(--m-background);
+        color: var(--d-blue);
+      }
+      &-green {
+        @include badge-style;
+        color: var(--d-green);
+        background-color: var(--m-background);
+      }
     }
   }
 }

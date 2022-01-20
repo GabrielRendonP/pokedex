@@ -2,6 +2,10 @@
   @media (max-width: 450px) { @content; }
 }
 
+@mixin desktop-screen {
+  @media (min-width: 410px ) { @content }
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;

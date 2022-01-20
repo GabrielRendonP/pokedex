@@ -30,6 +30,7 @@
 
  html {
      background-color: #e9e5d1;
+     overflow-x: hidden;
  }
 
  body {
