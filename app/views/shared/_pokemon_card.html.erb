@@ -12,8 +12,8 @@
       <div class="badges-container">
         <% poke.poke_types.each do |p_type| %>
           <div class='badge-display'>
-            <%= button_to 'X', delete_type_path(id: p_type.id ,poke_id: poke.id), method: :delete %>
             <%= type_badge @view_context, p_type.name %>
+            <%= button_to 'X', delete_type_path(id: p_type.id ,poke_id: poke.id), method: :delete %>
           </div>
         <% end %>
       </div>
@@ -24,8 +24,8 @@
       <div class="badges-container">
         <% poke.abilities.each do |p_ability| %>
           <div class='badge-display'>
-            <%= button_to 'X', delete_ability_path(id: p_ability.id ,poke_id: poke.id), method: :delete %>
             <%= random_badge @view_context, p_ability.name %>
+            <%= button_to 'X', delete_ability_path(id: p_ability.id ,poke_id: poke.id), method: :delete %>
           </div>
         <% end %>
       </div>

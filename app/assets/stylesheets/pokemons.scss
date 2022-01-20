@@ -93,18 +93,12 @@
 @include desktop-screen {
   .poke-card {
     @include flex-center;
+    margin: 1em;
+    width: 50%;
 
     .poke-name {
-      font-size: 1rem;
+      font-size: 2rem;
       font-weight: bold;
-    }
-
-    img {
-      width: 200px;
-      height: 200px;
-      image-rendering: pixelated;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: crisp-edges;
     }
   }
 

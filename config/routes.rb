@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :pokemons
   resources :trainers
   resources :pokes
-
+  
   get 'add_ability', to: 'abilities#link_ability'
   get 'add_type', to: 'poke_types#add_poke_type'
   delete 'delete_ability', to: 'abilities#delete_ability_asoc'
