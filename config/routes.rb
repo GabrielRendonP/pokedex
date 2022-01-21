@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'trainers#index'
 
   resources :poke_types
