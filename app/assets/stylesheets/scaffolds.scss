@@ -59,7 +59,9 @@ td {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table; }
+  display: table; 
+  border-radius: 8px;
+}
 
 #error_explanation {
   width: 450px;
@@ -83,3 +85,13 @@ td {
 
 label {
   display: block; }
+
+  .isDisabled {
+    display: contents;
+    a {
+      color: grey;
+      cursor: not-allowed;
+      opacity: 0.5;
+      text-decoration: none;
+    }
+  }

@@ -11,8 +11,10 @@
   <% end %>
 
   <div class="links-container">
-    <%= link_to 'Add new pokemon', new_pokemon_path %>
-    <%= link_to 'Edit', edit_trainer_path(@trainer) %>
+    <% if current_trainer == @trainer %>
+      <%= link_to 'Add new pokemon', new_pokemon_path %>
+      <%= link_to 'Edit', edit_trainer_path(@trainer) %>
+    <% end %>
     <%= link_to 'Back', trainers_path %>
   </div>
 </div>

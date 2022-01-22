@@ -5,6 +5,7 @@ class TrainersController < ApplicationController
   # GET /trainers or /trainers.json
   def index
     @trainers = Trainer.all
+    @view_context = view_context
   end
 
   # GET /trainers/1 or /trainers/1.json
@@ -18,7 +19,8 @@ class TrainersController < ApplicationController
   end
 
   # GET /trainers/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /trainers or /trainers.json
   def create

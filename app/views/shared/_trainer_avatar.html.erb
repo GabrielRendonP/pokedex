@@ -6,7 +6,17 @@
       <% end %>
   </div>
     <div class="avatar-info">
-     <%= link_to 'Edit', edit_trainer_path(trainer) %>
-     <%= link_to 'Destroy', trainer, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= set_link_state link:(link_to 'Edit', edit_trainer_path(trainer)),
+        view_context: @view_context,
+        current_user: current_trainer, 
+        user: trainer,
+        text: 'Edit'
+      %>
+      <%= set_link_state link:(link_to 'Destroy', trainer, method: :delete, data: { confirm: 'Are you sure?' }),
+        view_context: @view_context,
+        current_user: current_trainer, 
+        user: trainer,
+        text: 'Destroy'
+      %>
     </div>
 </div>

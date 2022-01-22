@@ -11,7 +11,17 @@
       <% end %>
   </div>
   <div class="avatar-info">
-    <%= link_to 'Edit', edit_pokemon_path(poke) %>
-    <%= link_to 'Destroy', poke, method: :delete, data: { confirm: 'Are you sure?' } %>
+   <%= set_link_state link:(link_to 'Edit', edit_pokemon_path(poke)),
+        view_context: @view_context,
+        current_user: current_trainer, 
+        user: poke.trainer,
+        text: 'Edit'
+    %>
+    <%= set_link_state link:(link_to 'Destroy', poke, method: :delete, data: { confirm: 'Are you sure?' }),
+      view_context: @view_context,
+      current_user: current_trainer, 
+      user: poke.trainer,
+      text: 'Destroy'
+    %>
   </div>
 </div>

@@ -6,35 +6,39 @@
 
   <%= render 'shared/pokemon_card', poke: @pokemon, show_all: true %>
 
-  <%= form_with url: add_ability_path, method: :get do |form| %>
-    <div class="field">
-      <%= form.label :ability %>
-      <%= form.collection_select :name, Ability.all, :name, :name, propmt: true %>
-    </div>
+  <% if current_trainer.id == @pokemon.trainer.id %>
+    <%= form_with url: add_ability_path, method: :get do |form| %>
+      <div class="field">
+        <%= form.label :ability %>
+        <%= form.collection_select :name, Ability.all, :name, :name, propmt: true %>
+      </div>
 
-    <%= form.hidden_field :poke_id, value: @pokemon.id %>
+      <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
-    <div class="actions">
-      <%= form.submit 'Add new ability' %>
-    </div>
-  <% end %>
+      <div class="actions">
+        <%= form.submit 'Add new ability' %>
+      </div>
+    <% end %>
 
-  <%= form_with url: add_type_path, method: :get do |form| %>
+    <%= form_with url: add_type_path, method: :get do |form| %>
 
-    <div class="field">
-      <%= form.label :poke_type %>
-      <%= form.collection_select :name, PokeType.all, :name, :name, propmt: true %>
-    </div>
+      <div class="field">
+        <%= form.label :poke_type %>
+        <%= form.collection_select :name, PokeType.all, :name, :name, propmt: true %>
+      </div>
 
-    <%= form.hidden_field :poke_id, value: @pokemon.id %>
+      <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
-    <div class="actions">
-      <%= form.submit 'Add new type' %>
-    </div>
+      <div class="actions">
+        <%= form.submit 'Add new type' %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="links-container">
-    <%= link_to 'Edit', edit_pokemon_path(@pokemon) %>
+    <% if current_trainer.id == @pokemon.trainer.id%>
+      <%= link_to 'Edit', edit_pokemon_path(@pokemon) %>
+    <% end %>
     <%= link_to 'Back', pokemons_path %>
   </div>
 </section>

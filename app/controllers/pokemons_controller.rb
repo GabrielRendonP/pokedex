@@ -1,9 +1,11 @@
 class PokemonsController < ApplicationController
+  before_action :authenticate_trainer!, except: %i[index]
   before_action :set_pokemon, only: %i[show edit update destroy]
 
   # GET /pokemons or /pokemons.json
   def index
     @pokemons = Pokemon.all
+    @view_context = view_context
   end
 
   # GET /pokemons/1 or /pokemons/1.json
