@@ -10,6 +10,9 @@
       <%= render 'shared/trainer_avatar', trainer: trainer %>
     <% end %>
   </div>
-  <%= link_to 'New Trainer', new_trainer_path, class: 'my-link' %>
+  <div class="links-container">
+    <%= link_to 'Log in', new_trainer_session_path, class: 'my-link' %>
+    <%= link_to 'Sign up', new_trainer_registration_path, class: 'my-link' %>
+  </div>
 </section>
 

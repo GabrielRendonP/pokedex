@@ -1,4 +1,5 @@
 class TrainersController < ApplicationController
+  before_action :authenticate_trainer!, except: %i[index]
   before_action :set_trainer, only: %i[show edit update destroy]
 
   # GET /trainers or /trainers.json

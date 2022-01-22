@@ -9,6 +9,17 @@
   z-index: 2;
 }
 
+#alert {
+  position: absolute;
+  background-color: var(--m-background);
+  color: var(--d-blue);
+  border: 4px solid black;
+  border-radius: 20px;
+  animation: slide 2s ease-in-out forwards;
+  padding: 2em;
+  z-index: 2;
+}
+
 @keyframes slide {
   0% {
     opacity: 0;

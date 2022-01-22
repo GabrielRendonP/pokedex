@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <% unless notice.nil? %>
+      <p id='notice' class="notice"><%= notice %></p>
+    <% end %>
+    <% unless alert.nil? %>
+       <p id='alert' class="alert"><%= alert %></p>
+    <% end %>
     <%= turbo_frame_tag "modal" %>
     <%= render 'shared/navbar' %>
     <%= yield %>

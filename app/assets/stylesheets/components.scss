@@ -71,8 +71,8 @@ form {
 }
 
 .links-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-center;
+  
   gap: 1rem;
   margin: 1rem;
   width: 100%;
