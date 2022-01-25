@@ -69,3 +69,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "cancancan", "~> 3.3"
+
+gem "rails_refactor", "~> 1.4"
