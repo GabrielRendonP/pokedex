@@ -15,7 +15,10 @@
       <p id='notice' class="notice"><%= notice %></p>
     <% end %>
     <% unless alert.nil? %>
-       <p id='alert' class="alert"><%= alert %></p>
+      <div id='alert' class='alert'>
+        <p><%= alert %></p>
+        <div> </div>
+      </div>
     <% end %>
     <%= turbo_frame_tag "modal" %>
     <%= render 'shared/navbar' %>

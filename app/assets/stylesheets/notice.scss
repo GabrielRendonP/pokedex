@@ -1,3 +1,11 @@
+@mixin notice-style {
+  background-color: var(--m-background);
+    color: var(--d-blue);
+    border: 4px solid black;
+    border-radius: 20px;
+    padding: 2em;
+}
+
 #notice {
   position: absolute;
   background-color: var(--m-background);
@@ -11,14 +19,23 @@
 
 #alert {
   position: absolute;
-  background-image: url('psyduck_error.gif');
-  background-color: var(--m-background);
-  color: var(--d-blue);
-  border: 4px solid black;
-  border-radius: 20px;
-  animation: slide 2s ease-in-out forwards;
+  animation: slide 2.5s ease-in-out forwards;
   padding: 2em;
-  z-index: 2;
+
+  p {
+    @include notice-style();
+    
+    color: var(--l-red);
+    position: relative;
+    right: -100px;
+    top: 50px;
+  }
+
+  div {
+    background-image: url('psyduck_error.gif');
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @keyframes slide {
