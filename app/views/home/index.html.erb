@@ -1,0 +1,14 @@
+<section class='main-container'>
+  <div class='home'>
+    <div class='logo'>
+    </div>
+    <div class='links-container'>
+      <% if trainer_signed_in? %>
+        <%= link_to 'Log out', destroy_trainer_session_path, method: :delete, class: 'my-link' %>
+      <% else %>
+        <%= link_to 'Log in', new_trainer_session_path, class: 'my-link' %>
+        <%= link_to 'Sign up', new_trainer_registration_path, class: 'my-link' %>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,8 @@
 <nav>
+<%= link_to root_path do%>
+  <div class='logo'></div>
+<% end %>
     <%= link_to menu_path, data: { turbo_frame: "modal" }, class:'message-link' do %>  
-      Poke Menu
+      <div data-action="click->menu#openPoke" data-controller="menu" class='pokeball-icon'></div>
     <%end%>
 </nav>

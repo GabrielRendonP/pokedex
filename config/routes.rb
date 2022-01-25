@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
   devise_for :trainers
-  root 'trainers#index'
 
   resources :poke_types
   resources :abilities

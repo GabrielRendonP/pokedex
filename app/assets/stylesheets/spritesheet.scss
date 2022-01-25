@@ -1,0 +1,25 @@
+@import "./utilities.scss";
+
+.pokeball-icon {
+  z-index: 2;
+  display: block;
+  width: 128px;
+  height: 128px;
+  background-color: transparent;
+  background-image: url('pokeball_spritesheet.png');
+  background-repeat: no-repeat;
+
+  @include spriteSheetPosition(-384px, 0);
+
+  &.open {
+    animation: openBall steps(5) 0.5s forwards;
+
+    @include spriteAnimation(openBall,0 ,0 ,-640px, 0);
+  }
+
+  &.close {
+    animation: closeBall steps(11) 0.5s forwards;
+
+    @include spriteAnimation(closeBall,-768px ,0 ,-2176px, 0);
+  }
+}

@@ -27,6 +27,7 @@
     transform-origin: top;
     position: absolute;
     top: 50px;
+    right: 0;
 
     .modal-window {
       display: flex;
@@ -63,17 +64,23 @@
 
 nav {
   @include flex-center;
-  background-color: var(--l-blue);
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--l-red);
   width: 100vw;
   height: 50px;
   box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.39);
 
   a {
-    background-color: var(--m-background);
+    // background-color: var(--m-background);
     border-radius: 8px;
     padding: 0.5rem;
     font-weight: bold;
     text-decoration: none;
-    color: var(--d-blue)
+    color: var(--d-blue);
+    &:hover {
+      background-color: transparent;
+      transform: scale(1.1);
+    }
   }
 }

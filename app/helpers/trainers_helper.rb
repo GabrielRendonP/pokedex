@@ -1,5 +1,5 @@
 module TrainersHelper
-  
+
   def set_link_state(link:, current_user:, user:, text: nil, view_context: nil)
     if current_user&.id == user.id
       link

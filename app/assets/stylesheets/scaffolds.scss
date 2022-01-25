@@ -1,65 +1,86 @@
-@import './utilities.scss';
+@import "./utilities.scss";
 
-@include small-screen {
-  body {
-    @include flex-center;
+html {
+  background-image: url('background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-    flex-direction: column;
-    margin: 0 0.5rem;
-    height: 100%;
+body {
+  @include flex-center;
+
+  flex-direction: column;
+  margin: 0 0.5rem;
+  height: 100%;
+}
+
+.flex-container {
+  @include flex-center;
+  padding: 1em;
+  gap: 1em;
+  width: 100%;
+
+  &.green {
+    background-color: var(--l-green);
+    border-radius: 10px 10px 50px 50px;
   }
 
-  .flex-container {
-    @include flex-center;
-    padding: 1em;
-    gap: 1em;
-    width: 100%;
-
-    &.green {
-      background-color: var(--l-green);
-      border-radius: 10px 10px 50px 50px;
-    } 
-
-    &.blue {
-      background-color: var(--l-blue);
-      border-radius: 50px 50px 10px 10px;
-    }
+  &.blue {
+    background-color: var(--l-blue);
+    border-radius: 50px 50px 10px 10px;
   }
 }
 
-body, p, ol, ul, td {
+@include desktop-screen {
+  height: 100vh;
+}
+
+body,
+p,
+ol,
+ul,
+td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px;
+}
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px; }
+  font-size: 11px;
+}
 
 a {
-  color: var(--m-background); }
+  color: var(--m-background);
+}
 
 a:visited {
-  color: #666; }
+  color: #666;
+}
 
 a:hover {
   color: #fff;
-  background-color: #000; }
+  background-color: #000;
+}
 
 th {
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+}
 
 td {
-  padding: 0 5px 7px; }
+  padding: 0 5px 7px;
+}
 
 #notice {
-  color: green; }
+  color: green;
+}
 
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table; 
+  display: table;
   border-radius: 8px;
 }
 
@@ -68,7 +89,12 @@ td {
   border: 2px solid red;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0; }
+  background-color: #f0f0f0;
+  background-image: url('psyduck_error.gif');
+  background-repeat: no-repeat;
+  background-position: right;
+  min-height: 250px;
+}
 
 #error_explanation h2 {
   text-align: left;
@@ -77,21 +103,24 @@ td {
   font-size: 12px;
   margin: -7px -7px 0;
   background-color: #c00;
-  color: #fff; }
+  color: #fff;
+}
 
 #error_explanation ul li {
   font-size: 12px;
-  list-style: square; }
+  list-style: none;
+}
 
 label {
-  display: block; }
+  display: block;
+}
 
-  .isDisabled {
-    display: contents;
-    a {
-      color: grey;
-      cursor: not-allowed;
-      opacity: 0.5;
-      text-decoration: none;
-    }
+.isDisabled {
+  display: contents;
+  a {
+    color: grey;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
   }
+}
