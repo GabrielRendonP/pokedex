@@ -22,7 +22,7 @@
     <div class="flex-container">
       <h2> Abilities: </h2>
       <div class="badges-container">
-        <% poke.abilities.each do |p_ability| %>
+        <% poke.poke_abilities.each do |p_ability| %>
           <div class='badge-display'>
             <%= random_badge @view_context, p_ability.name %>
             <%= button_to 'X', delete_ability_path(id: p_ability.id ,poke_id: poke.id), method: :delete %>

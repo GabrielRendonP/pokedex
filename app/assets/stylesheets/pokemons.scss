@@ -6,7 +6,7 @@
 .poke-card {
   @include flex-center;
 
-  background-image: linear-gradient(var(--l-green), var(--d-green));
+  background-image: linear-gradient(45deg, var(--d-green) 0%,  var(--l-green) 49%,  var(--l-red) 50%,  var(--d-red) 100%);
   border-radius: 20px 40px;
   width: 90%;
   padding: 1em;

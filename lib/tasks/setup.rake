@@ -5,6 +5,6 @@ task set_data: :environment do
   abilities_list = TaskHelpers.fetch_abilities
   poke_types_list = TaskHelpers.fetch_types
   PokeDatum.create!(poke_list)
-  Ability.create!(abilities_list)
+  PokeAbility.create!(abilities_list)
   PokeType.create!(poke_types_list)
 end

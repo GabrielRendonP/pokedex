@@ -1,0 +1,2 @@
+module PokeAbilitiesHelper
+end

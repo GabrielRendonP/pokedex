@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Poke Abilities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poke_abilities.each do |poke_ability| %>
+      <tr>
+        <td><%= poke_ability.name %></td>
+        <td><%= poke_ability.description %></td>
+        <td><%= link_to 'Show', poke_ability %></td>
+        <td><%= link_to 'Edit', edit_poke_ability_path(poke_ability) %></td>
+        <td><%= link_to 'Destroy', poke_ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Poke Ability', new_poke_ability_path %>

@@ -5,6 +5,7 @@
   border-radius: 50px;
   padding: 0.5rem;
   box-shadow: 5px 5px 5px grey;
+  border: solid white 2px;
 }
 
 form {
@@ -161,7 +162,7 @@ form {
         background-color: var(--l-yellow);
         color: var(--d-blue);
       }
-      &-poision,
+      &-poison,
       &-bug,
       &-grass,
       &-fairy {

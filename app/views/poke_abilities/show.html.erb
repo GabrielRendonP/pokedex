@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @poke_ability.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @poke_ability.description %>
+</p>
+
+<%= link_to 'Edit', edit_poke_ability_path(@poke_ability) %> |
+<%= link_to 'Back', poke_abilities_path %>
