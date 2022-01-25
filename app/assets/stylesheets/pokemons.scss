@@ -64,7 +64,7 @@
 
     .avatar-img {
       background-color: var(--l-red);
-      border-radius: 20px 80px;
+      border-radius: 80px 80px;
     }
     .avatar-info {
       @include flex-center;
@@ -134,7 +134,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100px;
+        width: 200px;
         height: 200px;
       }
       .avatar-info {

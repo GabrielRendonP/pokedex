@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :trainers
 
   resources :poke_types
-  resources :abilities
   resources :pokemons
   resources :trainers
   resources :pokes

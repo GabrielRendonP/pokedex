@@ -1,5 +1,15 @@
-class Ability < ApplicationRecord
-  has_and_belongs_to_many :pokemons
+class Ability
+  include CanCan::Ability
 
-  validates :name, presence: true
+  def initialize(trainer)
+    trainer ||= Trainer.new
+
+    can :read, Pokemon
+    can :read, Trainer
+
+    return unless trainer.present?
+
+    can :manage, Pokemon, trainer: trainer
+    can :manage, Trainer, id: trainer.id
+  end
 end

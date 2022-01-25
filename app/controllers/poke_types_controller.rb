@@ -1,4 +1,5 @@
 class PokeTypesController < ApplicationController
+  before_action :authenticate_trainer!, except: %i[index]
   before_action :set_poke_type, only: %i[show edit update destroy]
 
   # GET /poke_types or /poke_types.json

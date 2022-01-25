@@ -1,6 +1,7 @@
 class TrainersController < ApplicationController
   before_action :authenticate_trainer!, except: %i[index]
   before_action :set_trainer, only: %i[show edit update destroy]
+  load_and_authorize_resource except: %i[index show]
 
   # GET /trainers or /trainers.json
   def index
@@ -19,8 +20,7 @@ class TrainersController < ApplicationController
   end
 
   # GET /trainers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /trainers or /trainers.json
   def create
