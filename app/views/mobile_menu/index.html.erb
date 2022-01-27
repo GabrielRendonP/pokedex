@@ -4,6 +4,8 @@
       <div class="modal-window">
         <%= link_to 'Pokemons', pokemons_path %>
         <%= link_to 'Trainers', trainers_path %>
+        <%= link_to 'Abilities', poke_abilities_path %>
+        <%= link_to 'Types', poke_types_path %>
         <% if trainer_signed_in? %>
           <%= link_to 'Log out', destroy_trainer_session_path, method: :delete %>
         <% else %>

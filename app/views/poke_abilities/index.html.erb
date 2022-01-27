@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Poke Abilities</h1>
 
 <table>
@@ -16,9 +14,9 @@
       <tr>
         <td><%= poke_ability.name %></td>
         <td><%= poke_ability.description %></td>
-        <td><%= link_to 'Show', poke_ability %></td>
-        <td><%= link_to 'Edit', edit_poke_ability_path(poke_ability) %></td>
-        <td><%= link_to 'Destroy', poke_ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='td-links'>
+        <%= link_to 'Edit', edit_poke_ability_path(poke_ability) %>
+        <%= link_to 'Destroy', poke_ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Poke Ability', new_poke_ability_path %>
+<%= link_to 'New Poke Ability', new_poke_ability_path, class: 'myLink blue' %>

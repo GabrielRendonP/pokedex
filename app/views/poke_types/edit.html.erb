@@ -2,5 +2,7 @@
 
 <%= render 'form', poke_type: @poke_type %>
 
-<%= link_to 'Show', @poke_type %> |
-<%= link_to 'Back', poke_types_path %>
+<div class='links-container'>
+  <%= link_to 'Show', @poke_type, class: 'myLink blue' %>
+  <%= link_to 'Back', poke_types_path, class: 'myLink blue' %>
+</div>
