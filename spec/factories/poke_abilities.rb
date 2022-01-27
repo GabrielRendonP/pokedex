@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :poke_ability do
-    name { "MyString" }
-    description { "MyString" }
+    name { Faker::Name.name }
+    description { Faker::Lorem.sentence }
   end
 end

@@ -1,7 +1,11 @@
 module TaskHelpers
   def self.fetch_data(url)
-    base = 'https://pokeapi.co/api/v2'
-    response = RestClient.get("#{base}/#{url}")
+    begin
+      base = 'https://pokeapi.co/api/v2'
+      response = RestClient.get("#{base}/#{url}")
+    rescue RestClient::ExceptionWithResponse => e
+      p e.response
+    end
     JSON.parse(response)
   end
 

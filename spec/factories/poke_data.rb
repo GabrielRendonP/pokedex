@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :poke_datum do
-    name { "MyString" }
-    picture { "MyString" }
+    name { "pokemontest" }
+    sprites { ['logo.png', 'logo.png'] }
   end
 end

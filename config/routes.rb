@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :services, defaults: {format: :json} do
+    namespace :v1 do
+      get 'all', to: 'pokemon#index'
+      get 'show/:id', to: 'pokemon#show'
+    end
+  end
+  namespace :services do
+    get 'v1/index'
+    get 'v1/show'
+  end
   resources :poke_abilities
   root 'home#index'
   devise_for :trainers

@@ -21,12 +21,14 @@ class PokeTypesController < ApplicationController
   def add_poke_type
     pokemon = Pokemon.find_by_id(params[:poke_id])
     poke_type = PokeType.find_by(name: params[:name])
+    authorize! :edit, pokemon
     pokemon.poke_types << poke_type
     redirect_to pokemon, notice: 'Type added!'
   end
 
   def delete_type_asoc
     pokemon = Pokemon.find_by_id(params[:poke_id])
+    authorize! :edit, pokemon
     pokemon.poke_types.delete(PokeType.find_by_id(params[:id]))
     redirect_to pokemon, notice: 'Type removed!'
   end
