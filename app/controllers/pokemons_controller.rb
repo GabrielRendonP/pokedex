@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
   before_action :authenticate_trainer!, except: %i[index]
   before_action :set_pokemon, only: %i[show edit update destroy]
-  load_and_authorize_resource only: %i[edit]
+  load_and_authorize_resource only: %i[edit destroy]
 
   # GET /pokemons or /pokemons.json
   def index

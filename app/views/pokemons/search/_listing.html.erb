@@ -1,7 +1,7 @@
   <% if @pokemons.empty? %>
     <p style='text-align: center;'> Nothing here :( </p>
   <% end %>
-<div class="poke-list" id='pokemonListing' >
+<div class="list" id='pokemonListing' >
   <% @pokemons.each do |poke| %>
     <%= render 'shared/pokemon_avatar', poke: poke %>
   <% end %>

@@ -1,0 +1,37 @@
+@import "../utilities.scss";
+
+.show-container {
+  @include flex-center;
+
+  border-radius: 10px;
+  background-color:#0099da91;
+  width: 100%;
+  gap: 1em;
+  margin-top: 1em;
+  height: 100%;
+
+  h1 {
+    padding: 1em;
+    font-size: 2rem;
+    color: var(--m-background);
+  }
+
+  h2 {
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--m-background);
+  }
+
+  p {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+}
+
+@include desktop-screen {
+  .show-container {
+    justify-content: start;
+
+    @include flex-center;
+  }
+}

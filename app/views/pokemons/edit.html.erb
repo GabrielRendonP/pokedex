@@ -1,8 +1,8 @@
-<section class='main-container'>
+<section class='index-container'>
   <h1>Editing Pokemon</h1>
-  <%= render 'form', pokemon: @pokemon %>
+  <%= render 'form', pokemon: @pokemon, form_type: :edit %>
   <div class='links-container'>
-    <%= link_to 'Show', @pokemon %>
-    <%= link_to 'Back', pokemons_path %>
+    <%= link_to 'Show', @pokemon, class:'myLink green' %>
+    <%= link_to 'Back', pokemons_path, class:'myLink green' %>
   </div>
 </section>

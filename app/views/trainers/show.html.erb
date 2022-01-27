@@ -1,20 +1,21 @@
 <% unless notice.nil? %>
   <p id="notice"><%= notice %></p>
 <% end %>
+<div class="show-container">
+  <h2> Trainer </h2>
+  <p> <%= @trainer.name %> </p>
 
-<div class="main-container">
-    <h2> Trainer </h2>
-    <p> <%= @trainer.name %> </p>
-
-  <% @trainer.pokemons.each do |poke| %>
-    <%= render "shared/pokemon_card", poke: poke, show_all: false %>
-  <% end %>
-
+  <div class='list'>
+    <% @trainer.pokemons.each do |poke| %>
+      <%= render "shared/pokemon_card", poke: poke, show_all: false %>
+    <% end %>
+  </div>
+  
   <div class="links-container">
     <% if current_trainer == @trainer %>
-      <%= link_to 'Add new pokemon', new_pokemon_path %>
-      <%= link_to 'Edit', edit_trainer_path(@trainer) %>
+      <%= link_to 'Add new pokemon', new_pokemon_path, class: 'myLink green' %>
+      <%= link_to 'Edit', edit_trainer_path(@trainer), class: 'myLink green' %>
     <% end %>
-    <%= link_to 'Back', trainers_path %>
+    <%= link_to 'Back', trainers_path, class: 'myLink green' %>
   </div>
 </div>

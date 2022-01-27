@@ -1,0 +1,31 @@
+@import "../utilities.scss";
+.index-container {
+  @include flex-center;
+  h1 {
+    font-size: 2rem;
+    color: var(--d-blue);
+    padding: 1em;
+  }
+  h2 {
+    color: white;
+    padding: 1em;
+  }
+
+  width: 100%;
+  gap: 1em;
+  padding: 0 1em;
+
+
+}
+
+@include desktop-screen {
+  .index-container {
+    justify-content: start;
+    height: 100vh;
+    h1 {
+      font-size: 4rem;
+      color: var(--d-blue);
+      padding: 1em;
+    }
+  }
+}

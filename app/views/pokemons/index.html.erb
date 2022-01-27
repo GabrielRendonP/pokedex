@@ -2,9 +2,9 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<section class="index-pokemons">
+<section class="index-container">
   <%= render 'shared/search_bar' %>
     <h1>Pokemons</h1>
     <%= render 'pokemons/search/listing' %>
-  <%= link_to 'New Pokemon', new_pokemon_path, class: "my-link" %>
+  <%= link_to 'New Pokemon', new_pokemon_path, class: "myLink green" %>
 </section>

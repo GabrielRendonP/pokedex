@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<section class='main-container'>
+<section class='show-container'>
 
   <%= render 'shared/pokemon_card', poke: @pokemon, show_all: true %>
 
@@ -16,7 +16,7 @@
       <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
       <div class="actions">
-        <%= form.submit 'Add new ability' %>
+        <%= form.submit "Add ability to #{@pokemon.name}" %>
       </div>
     <% end %>
 
@@ -30,15 +30,15 @@
       <%= form.hidden_field :poke_id, value: @pokemon.id %>
 
       <div class="actions">
-        <%= form.submit 'Add new type' %>
+        <%= form.submit "Add type to #{@pokemon.name}" %>
       </div>
     <% end %>
   <% end %>
 
   <div class="links-container">
     <% if current_trainer.id == @pokemon.trainer.id%>
-      <%= link_to 'Edit', edit_pokemon_path(@pokemon) %>
+      <%= link_to 'Edit', edit_pokemon_path(@pokemon), class: 'myLink green' %>
     <% end %>
-    <%= link_to 'Back', pokemons_path %>
+    <%= link_to 'Back', pokemons_path, class:'myLink green' %>
   </div>
 </section>

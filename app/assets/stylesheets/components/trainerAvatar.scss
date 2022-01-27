@@ -1,0 +1,69 @@
+@import '../utilities.scss';
+
+.avatar-trainer {
+  @include flex-center;
+  
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+  background-image: linear-gradient(var(--l-blue), var(--d-blue));
+  width: 100%;
+  border-radius: 28px;
+  padding: 2em 0.5em;
+  box-shadow: 5px 5px 5px grey;
+  margin: 1em;
+  transition: ease-in-out all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .avatar-img {
+    background-color: var(--l-red);
+    border-radius: 20px 80px;
+  }
+  .avatar-info {
+    @include flex-center;
+
+    color: var(--m-background);
+    gap: 1rem;
+
+    h2 {
+      font-size: 150%;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: var(--l-green);
+      border-radius: 8px;
+      width: 100%;
+      text-align: center;
+      padding: 0.2rem;
+      color: var(--dd-blue);
+      transition: ease-in-out 0.2s all;
+      &:hover {
+        filter: hue-rotate(-100deg);
+      }
+    }
+  }
+}
+
+@include desktop-screen {
+  .avatar-trainer {
+    margin: 1em;
+    width: 500px;
+
+    .avatar-info {
+      h2 {
+        font-size: 2rem;
+      }
+      a {
+        font-size: 1rem;
+        padding: 1em;
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

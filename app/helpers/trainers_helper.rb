@@ -4,7 +4,7 @@ module TrainersHelper
       link
     else
       place_holder = ActiveSupport::SafeBuffer.new("<a href=\"#\">#{text}</a>")
-      view_context.content_tag :span, place_holder, class: 'isDisabled'
+      view_context&.content_tag :span, place_holder, class: 'isDisabled'
     end
   end
 end

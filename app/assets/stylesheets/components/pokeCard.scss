@@ -1,0 +1,55 @@
+@import "../utilities.scss";
+
+.poke-card {
+  @include flex-center;
+
+  background-image: linear-gradient(45deg, var(--d-green) 0%,  var(--l-green) 49%,  var(--l-red) 50%,  var(--d-red) 100%);
+  border-radius: 20px 40px;
+  width: 90%;
+  margin: 1em;
+  padding: 1em;
+
+  .poke-name {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1em;
+    margin-top: 1rem;
+    background-color: var(--d-blue);
+    color: var(--m-background);
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.507);
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+a {
+  &:hover {
+    background-color: var(--l-yellow);
+    border-radius: 50%;
+  }
+}
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    background-image: linear-gradient(45deg, var(--d-blue) 0%,  var(--l-blue) 49%,  var(--l-green) 50%,  var(--d-green) 100%);
+  }
+}
+
+@include desktop-screen {
+  .poke-card {
+    @include flex-center;
+    margin: 1em;
+    min-width: 300px;
+    max-width: 600px;
+
+    .poke-name {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+}

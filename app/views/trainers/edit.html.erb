@@ -1,4 +1,4 @@
-<section class='main-container'>
+<section class='index-container'>
   <br>
   <h1>Editing Trainer</h1>
   <br>
@@ -6,7 +6,7 @@
   <%= render 'form', trainer: @trainer %>
 
   <div class='links-container'>
-    <%= link_to 'Show', @trainer %>
-    <%= link_to 'Back', trainers_path %>
+    <%= link_to 'Show', @trainer, class:'myLink green' %>
+    <%= link_to 'Back', trainers_path, class:'myLink green' %>
   </div>
 </section>

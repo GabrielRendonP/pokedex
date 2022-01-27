@@ -1,0 +1,38 @@
+@import "../utilities.scss";
+
+.links-container {
+  @include flex-center;
+
+  gap: 1rem;
+  margin: 1rem;
+  width: 100%;
+}
+
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@include desktop-screen {
+  .links-container {
+    width: 50%;
+  }
+
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

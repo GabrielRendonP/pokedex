@@ -2,7 +2,6 @@
   <% if pokemon.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pokemon.errors.count, "error") %> prohibited this pokemon from being saved:</h2>
-
       <ul>
         <% pokemon.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -13,16 +12,22 @@
 
   <div class="field">
     <h2 style="width: 100%; text-align:center;" class="form-title"> <%= "Current trainer: #{current_trainer.name}" %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :name, value: 'Pokemon name' %>
-    <%= form.collection_select :name, PokeDatum.all, :name, :name, propmt: true %>
-  </div>
+    <% if form_type == :edit %>
+      <div class="field">
+        <%= form.label :name, value: 'Pokemon name' %>
+        <%= form.text_field :name %>
+      </div>
+    <% else %>
+      <div class="field">
+        <%= form.label :name, value: 'Pokemon name' %>
+        <%= form.collection_select :name, PokeDatum.all, :name, :name, propmt: true %>
+      </div>
+    <% end %>
 
     <%= form.hidden_field :trainer_id, value: current_trainer.id %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>

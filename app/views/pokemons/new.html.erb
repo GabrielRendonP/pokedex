@@ -1,7 +1,6 @@
-<div class="main-container">
+<div class="index-container">
   <h1>New Pokemon</h1>
 
-  <%= render 'form', pokemon: @pokemon %>
+  <%= render 'form', pokemon: @pokemon, form_type: :select %>
 
-  <%= link_to 'Back', pokemons_path, class: "my-link" %>
 </div>
